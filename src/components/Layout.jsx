@@ -9,7 +9,8 @@ export function Layout({ children, onUploadClick }) {
             </main>
             <footer className="border-t border-slate-200 py-6 bg-white mt-auto">
                 <div className="container mx-auto px-4 text-center text-slate-500 text-sm">
-                    &copy; {new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(new Date())} Acadrive. Open source academic resources.
+                    <p>&copy; {new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(new Date())} Acadrive | Built with ❤️ by Saawant Gupta (1st Year)</p>
+                    <p className="mt-1 text-slate-400 text-xs">Open source academic resources</p>
                 </div>
             </footer>
         </div>
