@@ -6,8 +6,9 @@ import { ResourceCard } from './components/ResourceCard';
 import { ResourceModal } from './components/ResourceModal';
 import { UploadModal } from './components/UploadModal';
 import { supabase } from './lib/supabase';
-import { Loader2, Database, User } from 'lucide-react';
+import { Loader2, Database, User, Upload } from 'lucide-react';
 import { getUserId } from './lib/identity';
+import { Button } from './components/ui/Button';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -163,7 +164,14 @@ function App() {
             Share and discover academic resources anonymously. No login required.
           </p>
 
-          <div className="max-w-2xl mx-auto mt-8 flex flex-col gap-4">
+          <div className="mt-8 flex justify-center">
+            <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-[#e11d48] border-2 border-white shadow-[0_0_25px_rgba(225,29,72,0.6)] hover:scale-105 transition-transform text-white rounded-xl">
+              <Upload className="mr-3 h-6 w-6" />
+              Upload Resource
+            </Button>
+          </div>
+
+          <div className="max-w-2xl mx-auto mt-12 flex flex-col gap-4">
             <SearchBar onSearch={setSearchQuery} />
 
             <div className="flex justify-center">
