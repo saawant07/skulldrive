@@ -11,9 +11,8 @@
     display: none !important;
   }
 
-  /* Gothic Background Layer via Pseudo-element for Opacity Control */
-  body::before {
-    content: "";
+  /* Gothic Background Layer - Dedicated Div */
+  .gothic-bg {
     position: fixed;
     inset: 0;
     z-index: -20;
@@ -21,21 +20,15 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.3;
-    /* Adjusted for visibility */
+    opacity: 0.25;
     mix-blend-mode: overlay;
-    /* Blends nicely with dark bg */
     pointer-events: none;
   }
 
-  /* Remove the previous texture overlay to avoid conflict */
-  /* body::before was used for carbon-fibre, let's repurpose or remove if configured elsewhere. 
-     Wait, I see another body::before at line 152. I should probably modify THAT one or use body::after since body::after is hidden at line 10.
-     Actually, let's use a specific class .gothic-bg again in App.jsx to avoid pseudo-element conflicts if I can't see the whole file context easily.
-     BUT, I can specifically target the gothic bg.
-     Let's USE A DEDICATED DIV in App.jsx again, it's safer and user asked for "MY BACKGROUND BACK".
-     So I will revert index.css body changes and re-add the div class styles.
-  */
+  /* Remove body pseudo-element background to avoid conflicts */
+  body::before {
+    display: none;
+  }
 
   /* Blood Droplet Animation */
   .blood-container {
@@ -49,55 +42,60 @@
     overflow: hidden;
   }
 
+  /* Individual Droplets */
   .blood-drip {
     position: absolute;
     top: -20px;
-    width: 6px;
-    height: 10px;
-    /* Droplet shape */
+    width: 8px;
+    height: 12px;
     background: #e11d48;
-    border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg);
-    /* Teardrop angle */
-    opacity: 0.8;
-    filter: drop-shadow(0 0 2px #e11d48);
+    border-radius: 0 50% 50% 50%;
+    transform: rotate(45deg);
+    /* Teardrop shape */
+    opacity: 0;
+    filter: drop-shadow(0 0 3px rgba(225, 29, 72, 0.8));
     animation: dripFall linear infinite;
   }
 
-  /* Variation in droplet sizes and speeds */
+  /* Randomize droplet sizes and speeds via nth-child */
   .blood-drip:nth-child(3n) {
-    width: 8px;
-    height: 12px;
-    opacity: 0.6;
+    width: 10px;
+    height: 14px;
+    opacity: 0.9;
+  }
+
+  .blood-drip:nth-child(2n) {
+    width: 6px;
+    height: 9px;
+    opacity: 0.7;
   }
 
   .blood-drip:nth-child(5n) {
-    width: 4px;
-    height: 8px;
-    opacity: 0.9;
+    width: 12px;
+    height: 16px;
+    opacity: 0.8;
   }
 
   @keyframes dripFall {
     0% {
-      top: -20px;
+      top: -10%;
       opacity: 0;
-      transform: rotate(-45deg) scale(0.5);
+      transform: rotate(45deg) scale(0.5);
     }
 
     10% {
-      opacity: 0.8;
-      transform: rotate(-45deg) scale(1);
+      opacity: 0.9;
+      transform: rotate(45deg) scale(1);
     }
 
     80% {
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     100% {
       top: 110vh;
-      /* Falls off screen */
       opacity: 0;
-      transform: rotate(-45deg) scale(0.8);
+      transform: rotate(45deg) scale(0.8);
     }
   }
 }
