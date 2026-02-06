@@ -20,7 +20,7 @@ export function SearchBar({ onSearch, className }) {
                 type="text"
                 name="search"
                 autoComplete="off"
-                placeholder="Search for subjects, codes, question papers, or file names..."
+                placeholder="Search for resources, codes, question papers, or file names..."
                 className="search-input-global pl-10 h-12 text-lg rounded-full shadow-lg bg-black/60 backdrop-blur-md border-2 border-red-500 placeholder:text-slate-100 focus:border-red-500 focus:ring-4 focus:ring-red-900/40 transition-all text-slate-100 font-display tracking-wide"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
