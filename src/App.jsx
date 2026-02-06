@@ -128,7 +128,7 @@ function App() {
         animate={{
           x: [0, 100, -100, 0],
           y: [0, -50, 50, 0],
-          opacity: [0.15, 0.2, 0.15]
+          opacity: [0.1, 0.15, 0.1]
         }}
         transition={{
           duration: 20,
@@ -142,9 +142,9 @@ function App() {
 
         {/* Header Section */}
         <div className="text-center space-y-4 py-8">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight text-balance">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight text-balance drop-shadow-[0_0_20px_rgba(16,185,129,0.4)]">
             Sharing Knowledge, <br className="hidden md:block" />
-            <span className="text-blue-600">Made Simple.</span>
+            <span className="text-emerald-500">Made Simple.</span>
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto text-pretty">
             Share and discover academic resources anonymously. No login required.

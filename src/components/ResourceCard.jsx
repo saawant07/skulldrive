@@ -77,11 +77,9 @@ export function ResourceCard({ resource, onView, onDelete, onVote }) {
                         <div className="flex gap-2">
                             {resource.owner_id === getUserId() && (
                                 <Button
-                                    as={motion.button}
-                                    whileTap={{ scale: 0.95 }}
                                     size="icon"
                                     variant="danger"
-                                    className="h-9 w-9 rounded-xl"
+                                    className="h-9 w-9 rounded-xl hover:bg-red-500/10 text-emerald-500/70 hover:text-red-500"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         onDelete(resource);
@@ -94,7 +92,7 @@ export function ResourceCard({ resource, onView, onDelete, onVote }) {
                                 whileTap={{ scale: 0.95 }}
                                 size="sm"
                                 variant="secondary"
-                                className="h-9 text-xs px-4 rounded-xl shadow-none bg-slate-800 hover:bg-slate-700 text-slate-200 border-white/5"
+                                className="h-9 text-xs px-4 rounded-xl shadow-none bg-slate-900 border border-emerald-500/20 hover:bg-emerald-500/10 text-emerald-400"
                                 onClick={() => onView(resource)}
                             >
                                 <Eye className="h-3 w-3 mr-1.5" />
