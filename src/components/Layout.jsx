@@ -11,7 +11,7 @@ export function Layout({ children, onUploadClick }) {
                 <div className="container mx-auto px-4 text-center">
                     <p className="text-sm font-medium text-slate-400">
                         &copy; {new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(new Date())} Acadrive | Built with <span className="text-red-500">❤️</span> by{' '}
-                        <span className="text-blue-400 animate-pulse drop-shadow-[0_0_8px_rgba(96,165,250,0.5)]">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-emerald-600 font-bold animate-pulse drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]">
                             Saawant Gupta (1st Year)
                         </span>
                     </p>

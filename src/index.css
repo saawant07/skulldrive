@@ -3,16 +3,44 @@
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-50 antialiased font-sans overflow-x-hidden;
-    background-image:
-      radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.1) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.1) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.1) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, rgba(139, 92, 246, 0.1) 0px, transparent 50%);
-    background-attachment: fixed;
+    @apply bg-black text-slate-50 antialiased font-sans overflow-x-hidden;
   }
 }
 
 .font-heading {
   font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Add a subtle grain texture to make it look less 'flat' */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Forces all cards to be the same size and not stretch */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+  /* Prevents stretching to fill row height */
+}
+
+.resource-card {
+  background: #0a0a0a;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 12px;
+  height: 280px;
+  /* Adjust this height to your preference */
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
 }

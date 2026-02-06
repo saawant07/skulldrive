@@ -59,7 +59,7 @@ export function VoteButtons({ resource, onVote }) {
     const isDownvoted = hasVoted === 'down';
 
     return (
-        <div className="flex flex-col items-center gap-1 bg-slate-50 p-1 rounded-lg border border-slate-100 mr-3">
+        <div className="flex flex-col items-center gap-0.5 mr-3">
             <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={(e) => { e.stopPropagation(); handleVote('up'); }}

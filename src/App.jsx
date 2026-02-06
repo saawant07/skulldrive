@@ -123,7 +123,22 @@ function App() {
 
   return (
     <Layout onUploadClick={() => setIsUploadOpen(true)}>
-      <div className="max-w-7xl mx-auto space-y-8">
+      {/* Roaming Light */}
+      <motion.div
+        animate={{
+          x: [0, 100, -100, 0],
+          y: [0, -50, 50, 0],
+          opacity: [0.15, 0.2, 0.15]
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+        className="fixed top-0 left-0 w-[800px] h-[800px] bg-emerald-500/20 rounded-full blur-3xl pointer-events-none -z-10"
+      />
+
+      <div className="max-w-7xl mx-auto space-y-8 relative z-10">
 
         {/* Header Section */}
         <div className="text-center space-y-4 py-8">
@@ -165,40 +180,22 @@ function App() {
           </div>
         ) : resources.length > 0 ? (
           <motion.div
+            layout
             variants={containerVariants}
             initial="hidden"
             animate="show"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             <AnimatePresence mode="popLayout">
-              {resources.map((res, index) => {
-                // Bento Box Logic for spans
-                // Pattern:
-                // 0: Big highlight (2x2 on lg)
-                // 1, 2: Standard
-                // 3: Wide (2 cols)
-                // This is a simple repeating pattern or just for the first few.
-
-                let spanClasses = "";
-                if (index === 0) {
-                  spanClasses = "md:col-span-2 lg:col-span-2 md:row-span-2";
-                } else if (index === 3) {
-                  spanClasses = "md:col-span-2 lg:col-span-2";
-                } else if (index === 6) {
-                  spanClasses = "md:col-span-2 lg:col-span-1";
-                }
-
-                return (
-                  <div key={res.id} className={`${spanClasses}`}>
-                    <ResourceCard
-                      resource={res}
-                      onView={setViewResource}
-                      onDelete={handleDelete}
-                      onVote={handleVote}
-                    />
-                  </div>
-                );
-              })}
+              {resources.map((res) => (
+                <ResourceCard
+                  key={res.id}
+                  resource={res}
+                  onView={setViewResource}
+                  onDelete={handleDelete}
+                  onVote={handleVote}
+                />
+              ))}
             </AnimatePresence>
           </motion.div>
         ) : (

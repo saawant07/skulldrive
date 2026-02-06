@@ -19,15 +19,15 @@ export function ResourceCard({ resource, onView, onDelete, onVote }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            whileHover={{ scale: 1.02, rotateY: 2 }}
+            whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="group relative h-full bg-slate-900/40 backdrop-blur-xl border border-white/20 rounded-3xl p-6 hover:border-blue-500/30 transition-colors overflow-hidden"
+            className="group relative h-full flex flex-col bg-[#0a0a0a] border border-emerald-500/20 rounded-2xl p-5 hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] transition-all overflow-hidden min-h-[200px]"
         >
             {/* Inner Glow Hack */}
             <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5 pointer-events-none" />
 
-            {/* Gradient Blob for "Premium" feel */}
-            <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors" />
+            {/* Gradient Blob for "Premium" feel - kept subtle */}
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl group-hover:bg-emerald-500/10 transition-colors" />
 
             {isRecommended && (
                 <div className="absolute top-0 right-0 bg-yellow-500/20 text-yellow-200 text-[10px] font-bold px-3 py-1 rounded-bl-xl border-l border-b border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.2)] flex items-center gap-1 z-10">
@@ -42,27 +42,27 @@ export function ResourceCard({ resource, onView, onDelete, onVote }) {
                 <div className="flex flex-col flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2 mb-3">
                         <div className="flex items-center gap-2">
-                            <div className="p-2 bg-slate-800/80 rounded-lg text-blue-400 ring-1 ring-white/5 group-hover:text-blue-300 transition-colors">
+                            <div className="p-2 bg-slate-900 rounded-lg text-emerald-400 ring-1 ring-white/5 group-hover:text-emerald-300 transition-colors">
                                 <FileText className="h-5 w-5" />
                             </div>
-                            <span className="inline-flex items-center rounded-md bg-slate-800/50 px-2.5 py-1 text-xs font-medium text-slate-300 ring-1 ring-white/5">
+                            <span className="inline-flex items-center rounded-md bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-400 ring-1 ring-emerald-500/20">
                                 Sem {resource.semester}
                             </span>
                         </div>
                     </div>
 
                     <div className="flex-1 space-y-2">
-                        <h3 className="text-lg font-bold font-heading text-slate-100 line-clamp-2 leading-tight group-hover:text-blue-400 transition-colors" title={resource.subject_name}>
+                        <h3 className="text-lg font-bold font-sans text-white line-clamp-2 leading-tight group-hover:text-blue-400 transition-colors" title={resource.subject_name}>
                             {resource.subject_name}
                         </h3>
                         <p className="text-sm text-slate-400 font-medium truncate">{resource.subject_code}</p>
 
                         <div className="pt-3 mt-1 border-t border-white/5 space-y-2">
-                            <div className="flex flex-wrap gap-2 text-xs text-slate-500">
-                                <span className="truncate max-w-[150px] bg-slate-800/50 px-2 py-1 rounded text-slate-300" title={resource.file_name}>
+                            <div className="flex flex-wrap gap-2 text-xs font-medium">
+                                <span className="truncate max-w-[150px] bg-slate-800/80 px-2 py-1 rounded text-slate-300 border border-slate-700/50" title={resource.file_name}>
                                     {resource.file_name}
                                 </span>
-                                <span className="bg-slate-800/50 px-2 py-1 rounded text-slate-300">
+                                <span className="bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20">
                                     {resource.resource_type}
                                 </span>
                             </div>
