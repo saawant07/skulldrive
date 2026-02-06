@@ -104,3 +104,20 @@ body {
 
   /* Just a slight glow change */
 }
+
+/* This forces the subheading to stop blinking and stay visible */
+.subheading-text {
+  animation: none !important;
+  opacity: 1 !important;
+  color: #94a3b8 !important;
+  /* Silver Ash */
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* Brightens the Upload button to a true Stranger Things Red */
+.upload-btn-fixed {
+  background-color: #e11d48 !important;
+  box-shadow: 0 0 15px rgba(225, 29, 72, 0.6);
+  border: none;
+}
