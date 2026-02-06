@@ -9,6 +9,8 @@ import { supabase } from './lib/supabase';
 import { Loader2, Database, User } from 'lucide-react';
 import { getUserId } from './lib/identity';
 
+import { AnimatePresence, motion } from 'framer-motion';
+
 function App() {
   const [resources, setResources] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,6 +20,16 @@ function App() {
 
   const [viewResource, setViewResource] = useState(null);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
 
   const fetchResources = useCallback(async () => {
     setLoading(true);
@@ -146,24 +158,51 @@ function App() {
 
         {/* content */}
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-20 text-slate-400">
-            <Loader2 className="h-10 w-10 animate-spin mb-4" />
-            <p>Loading resources…</p>
-          </div>
-        ) : resources.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {resources.map((res) => (
-              <ResourceCard
-                key={res.id}
-                resource={res}
-                onView={setViewResource}
-                onDelete={handleDelete}
-                onVote={handleVote}
-              />
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="h-64 rounded-2xl bg-white/5 animate-pulse border border-white/5" />
             ))}
           </div>
+        ) : resources.length > 0 ? (
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr"
+          >
+            <AnimatePresence mode="popLayout">
+              {resources.map((res, index) => {
+                // Bento Box Logic for spans
+                // Pattern:
+                // 0: Big highlight (2x2 on lg)
+                // 1, 2: Standard
+                // 3: Wide (2 cols)
+                // This is a simple repeating pattern or just for the first few.
+
+                let spanClasses = "";
+                if (index === 0) {
+                  spanClasses = "md:col-span-2 lg:col-span-2 md:row-span-2";
+                } else if (index === 3) {
+                  spanClasses = "md:col-span-2 lg:col-span-2";
+                } else if (index === 6) {
+                  spanClasses = "md:col-span-2 lg:col-span-1";
+                }
+
+                return (
+                  <div key={res.id} className={`${spanClasses}`}>
+                    <ResourceCard
+                      resource={res}
+                      onView={setViewResource}
+                      onDelete={handleDelete}
+                      onVote={handleVote}
+                    />
+                  </div>
+                );
+              })}
+            </AnimatePresence>
+          </motion.div>
         ) : (
-          <div className="text-center py-20 bg-white rounded-2xl border border-dashed border-slate-200">
+          <div className="text-center py-20 bg-white/50 backdrop-blur-sm rounded-3xl border border-dashed border-slate-200">
             <div className="mx-auto bg-slate-50 w-16 h-16 rounded-full flex items-center justify-center mb-4 text-slate-400">
               <Database className="h-8 w-8" />
             </div>

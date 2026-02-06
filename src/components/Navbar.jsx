@@ -3,16 +3,20 @@ import { Button } from './ui/Button';
 
 export function Navbar({ onUploadClick }) {
     return (
-        <nav className="border-b border-slate-200 bg-white sticky top-0 z-50">
+        <nav className="border-b border-white/5 bg-slate-950/70 backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
             <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                    <BookOpen className="h-6 w-6 text-blue-600" />
-                    <span className="text-xl font-bold text-slate-900">Acadrive</span>
+                <div className="flex items-center gap-3">
+                    <div className="p-2 bg-blue-500/10 rounded-lg">
+                        <BookOpen className="h-6 w-6 text-blue-400" />
+                    </div>
+                    <span className="text-xl font-bold font-heading text-white tracking-tight">Acadrive</span>
                 </div>
 
-                <Button onClick={onUploadClick} className="gap-2">
-                    <Upload className="h-4 w-4" />
-                    <span>Upload Resource</span>
+                <Button onClick={onUploadClick} className="gap-2 relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-80 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-700 -skew-x-12" />
+                    <Upload className="h-4 w-4 relative z-10" />
+                    <span className="relative z-10">Upload Resource</span>
                 </Button>
             </div>
         </nav>

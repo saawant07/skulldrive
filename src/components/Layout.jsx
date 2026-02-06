@@ -2,15 +2,22 @@ import { Navbar } from './Navbar';
 
 export function Layout({ children, onUploadClick }) {
     return (
-        <div className="min-h-screen bg-slate-50 flex flex-col">
+        <div className="min-h-screen flex flex-col font-sans text-slate-50 selection:bg-blue-500/30">
             <Navbar onUploadClick={onUploadClick} />
-            <main className="flex-1 container mx-auto px-4 py-8">
+            <main className="flex-1 container mx-auto px-4 py-8 relative z-10">
                 {children}
             </main>
-            <footer className="border-t border-slate-200 py-6 bg-white mt-auto">
-                <div className="container mx-auto px-4 text-center text-slate-500 text-sm">
-                    <p>&copy; {new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(new Date())} Acadrive | Built with ❤️ by Saawant Gupta (1st Year)</p>
-                    <p className="mt-1 text-slate-400 text-xs">Open source academic resources</p>
+            <footer className="border-t border-white/5 py-8 bg-slate-950/50 backdrop-blur-sm mt-auto relative z-10">
+                <div className="container mx-auto px-4 text-center">
+                    <p className="text-sm font-medium text-slate-400">
+                        &copy; {new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(new Date())} Acadrive | Built with <span className="text-red-500">❤️</span> by{' '}
+                        <span className="text-blue-400 animate-pulse drop-shadow-[0_0_8px_rgba(96,165,250,0.5)]">
+                            Saawant Gupta (1st Year)
+                        </span>
+                    </p>
+                    <p className="mt-2 text-slate-500 text-xs tracking-wide uppercase opacity-70">
+                        Open source academic resources
+                    </p>
                 </div>
             </footer>
         </div>
