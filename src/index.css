@@ -7,6 +7,7 @@
   }
 
   /* Vignette Overlay */
+  /* Vignette Overlay */
   body::after {
     content: "";
     position: fixed;
@@ -119,5 +120,30 @@ body::before {
   /* Adjust this height to your preference */
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+/* KILL the dark blurry circle effect */
+body::after,
+.vignette,
+[class*="vignette"],
+[class*="overlay-pulse"] {
+  display: none !important;
+  animation: none !important;
+}
+
+/* Make the Search Bar stand out professionally */
+input[type="text"] {
+  background-color: #1a0505 !important;
+  border: 1px solid #ef4444 !important;
+  color: #f1f5f9 !important;
+}
+
+/* Premium Neon Button Look */
+.upload-btn-premium {
+  background: rgba(225, 29, 72, 0.1) !important;
+  backdrop-filter: blur(10px);
+  border: 2px solid #ef4444 !important;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
   transition: all 0.3s ease;
 }

@@ -159,7 +159,7 @@ function App() {
             <br className="hidden md:block" />
             <span className="text-red-600 drop-shadow-[0_0_35px_rgba(185,28,28,1)]">Master the Syllabus.</span>
           </h1>
-          <p className="text-lg text-[#94a3b8] max-w-2xl mx-auto text-pretty font-medium tracking-wide">
+          <p className="text-lg text-[#cbd5e1] max-w-2xl mx-auto text-pretty font-medium tracking-wide">
             Share and discover academic resources anonymously. No login required.
           </p>
 

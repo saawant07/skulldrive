@@ -12,7 +12,7 @@ export function Navbar({ onUploadClick }) {
                     <span className="text-xl font-bold font-heading text-white tracking-tight">Acadrive</span>
                 </div>
 
-                <Button onClick={onUploadClick} className="gap-2 relative overflow-hidden group bg-[#e11d48] hover:bg-[#be123c] text-white font-bold border-none shadow-[0_0_20px_rgba(225,29,72,0.6)]">
+                <Button onClick={onUploadClick} className="gap-2 relative overflow-hidden group bg-red-600/20 hover:bg-red-600/30 backdrop-blur-md text-white font-bold border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.4)]">
                     <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-700 -skew-x-12" />
                     <Upload className="h-4 w-4 relative z-10" />
                     <span className="relative z-10">Upload Resource</span>
