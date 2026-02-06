@@ -21,7 +21,7 @@ export function SearchBar({ onSearch, className }) {
                 name="search"
                 autoComplete="off"
                 placeholder="Search for subjects, codes, or file names…"
-                className="pl-10 h-12 text-lg rounded-full shadow-sm bg-slate-50 border-slate-200 placeholder:text-slate-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition-all text-slate-800"
+                className="pl-10 h-12 text-lg rounded-full shadow-lg bg-red-950/20 backdrop-blur-xl border-red-900/50 placeholder:text-red-300/30 focus:border-red-500/50 focus:ring-4 focus:ring-red-900/20 transition-all text-red-100/90 font-display tracking-wide"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
             />

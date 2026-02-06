@@ -10,8 +10,8 @@ export function Layout({ children, onUploadClick }) {
             <footer className="border-t border-white/5 py-8 bg-slate-950/50 backdrop-blur-sm mt-auto relative z-10">
                 <div className="container mx-auto px-4 text-center">
                     <p className="text-sm font-medium text-slate-400">
-                        &copy; {new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(new Date())} Acadrive | Built with <span className="text-red-500">❤️</span> by{' '}
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-emerald-600 font-bold animate-[pulse_3s_ease-in-out_infinite] drop-shadow-[0_0_10px_rgba(16,185,129,0.5)]">
+                        &copy; {new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(new Date())} Acadrive | Built with <span className="text-red-700">❤️</span> by{' '}
+                        <span className="inline-block font-display font-bold text-red-500 tracking-widest animate-glitch opacity-80">
                             Saawant Gupta (1st Year)
                         </span>
                     </p>

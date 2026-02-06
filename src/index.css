@@ -3,17 +3,89 @@
 
 @layer base {
   body {
-    @apply bg-[#050505] text-[#cbd5e1] antialiased font-sans overflow-x-hidden;
+    @apply bg-[#050505] text-[#94a3b8] antialiased font-sans overflow-x-hidden relative;
+  }
+
+  /* Vignette Overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.9) 100%);
+    pointer-events: none;
+    z-index: 9998;
   }
 }
 
 .font-heading {
-  font-family: 'Syne', sans-serif;
-  letter-spacing: -0.02em;
+  font-family: 'Grenze Gotisch', cursive;
+  letter-spacing: 0.05em;
+  font-weight: 500;
 }
 
 .font-display {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', monospace;
+}
+
+/* Animations */
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  25% {
+    opacity: 0.9;
+  }
+
+  75% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+    text-shadow: 2px 0 #00f, -2px 0 #f00;
+  }
+
+  40% {
+    transform: translate(2px, -2px);
+    text-shadow: -2px 0 #00f, 2px 0 #f00;
+  }
+
+  60% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+
+  80% {
+    transform: translate(2px, 2px);
+    text-shadow: 2px 0 #00f, -2px 0 #f00;
+  }
+
+  100% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+}
+
+.animate-flicker {
+  animation: flicker 4s infinite;
+}
+
+.animate-glitch {
+  animation: glitch 3s infinite alternate-reverse;
 }
 
 /* Add a subtle grain texture to make it look less 'flat' */

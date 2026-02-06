@@ -24,7 +24,7 @@ export function Filters({ filters, setFilters }) {
     return (
         <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-3">
-                <span className="text-sm font-medium text-slate-500">Type:</span>
+                <span className="text-sm font-medium text-red-400/70 font-display tracking-widest uppercase text-xs">Type:</span>
                 <div className="flex flex-wrap gap-2">
                     {resourceTypes.map((type) => {
                         // Check if active
@@ -35,10 +35,10 @@ export function Filters({ filters, setFilters }) {
                                 key={type}
                                 onClick={() => toggleResourceType(type)}
                                 className={clsx(
-                                    "px-4 py-1.5 rounded-full text-sm font-medium transition-all",
+                                    "px-4 py-1.5 rounded-full text-sm font-medium transition-all font-display tracking-wide",
                                     isActive
-                                        ? "bg-slate-900 text-white shadow-md hover:bg-slate-800"
-                                        : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:border-slate-300"
+                                        ? "bg-red-900 text-red-50 shadow-[0_0_10px_rgba(159,18,57,0.5)] border border-red-700"
+                                        : "bg-red-950/20 backdrop-blur-md text-red-300/70 border border-red-900/30 hover:bg-red-900/30 hover:text-red-200 hover:border-red-800/50"
                                 )}
                             >
                                 {type}
@@ -49,9 +49,9 @@ export function Filters({ filters, setFilters }) {
             </div>
 
             <div className="flex items-center gap-3">
-                <span className="text-sm font-medium text-slate-500">Semester:</span>
+                <span className="text-sm font-medium text-red-400/70 font-display tracking-widest uppercase text-xs">Semester:</span>
                 <select
-                    className="h-9 rounded-md border-slate-200 bg-white px-3 py-1 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                    className="h-9 rounded-md border-red-900/50 bg-red-950/30 backdrop-blur-md px-3 py-1 text-sm text-red-300 focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500/50 font-display tracking-wide"
                     value={filters.semester || 'All'}
                     onChange={handleSemesterChange}
                 >
