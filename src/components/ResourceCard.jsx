@@ -106,5 +106,4 @@ export function ResourceCard({ resource, onView, onDelete, onVote }) {
             </div>
         </motion.div>
     );
-    );
 }
