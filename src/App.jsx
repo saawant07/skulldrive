@@ -128,20 +128,33 @@ function App() {
       {/* Gothic Background */}
       <div className="gothic-bg" />
 
-      {/* Blood Drips */}
-      <div className="blood-container">
+      {/* Blood Reservoir */}
+      <div className="fixed top-0 left-0 w-full h-2 bg-[#880808] z-50 shadow-[0_0_20px_#880808]" />
+
+      {/* Framer Motion Blood Drips */}
+      <div className="fixed top-2 left-0 w-full h-full pointer-events-none z-50">
         {[...Array(12)].map((_, i) => (
-          <div
+          <motion.div
             key={i}
-            className="blood-drip"
+            initial={{ height: "0vh" }}
+            animate={{ height: ["0vh", "100vh"] }}
+            transition={{
+              duration: 20 + Math.random() * 10, // 20-30s slow duration
+              repeat: Infinity,
+              ease: "linear",
+              delay: Math.random() * 20
+            }}
+            className="absolute bg-[#880808] rounded-b-full shadow-[0_0_10px_#ff0000]"
             style={{
-              left: `${Math.random() * 100}%`,
-              animationDuration: `${Math.random() * 5 + 5}s`,
-              animationDelay: `${Math.random() * 5}s`
+              left: `${(i + 1) * (100 / 13)}%`,
+              width: `${4 + Math.random() * 4}px`, // 4-8px width
+              opacity: 0.9
             }}
           />
         ))}
       </div>
+
+      {/* Spores Layer */}
 
       {/* Spores Layer */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">

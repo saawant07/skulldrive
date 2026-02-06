@@ -12,6 +12,7 @@
   }
 
   /* Gothic Background Layer - Dedicated Div */
+  /* Gothic Background Layer - Dedicated Div */
   .gothic-bg {
     position: fixed;
     inset: 0;
@@ -20,8 +21,10 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.25;
-    mix-blend-mode: overlay;
+    opacity: 1;
+    /* Reset opacity, handled by brightness */
+    filter: brightness(0.4) grayscale(100%) sepia(50%);
+    /* Demonic Tome look */
     pointer-events: none;
   }
 
@@ -30,325 +33,279 @@
     display: none;
   }
 
-  /* Blood Droplet Animation */
-  .blood-container {
+  /* Blood Drips are now handled in App.jsx with Framer Motion */
+
+  .font-heading {
+    font-family: 'Grenze Gotisch', cursive;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .font-display {
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* Animations */
+  @keyframes flicker {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.8;
+    }
+
+    25% {
+      opacity: 0.9;
+    }
+
+    75% {
+      opacity: 0.85;
+    }
+  }
+
+  @keyframes glitch {
+    0% {
+      transform: translate(0);
+      text-shadow: none;
+    }
+
+    20% {
+      transform: translate(-2px, 2px);
+      text-shadow: 2px 0 #00f, -2px 0 #f00;
+    }
+
+    40% {
+      transform: translate(2px, -2px);
+      text-shadow: -2px 0 #00f, 2px 0 #f00;
+    }
+
+    60% {
+      transform: translate(0);
+      text-shadow: none;
+    }
+
+    80% {
+      transform: translate(2px, 2px);
+      text-shadow: 2px 0 #00f, -2px 0 #f00;
+    }
+
+    100% {
+      transform: translate(0);
+      text-shadow: none;
+    }
+  }
+
+  .animate-flicker {
+    animation: flicker 4s infinite;
+  }
+
+  .animate-glitch {
+    animation: glitch 3s infinite alternate-reverse;
+  }
+
+  /* Add a subtle grain texture to make it look less 'flat' */
+  body::before {
+    content: "";
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -10;
+    background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+    opacity: 0.03;
     pointer-events: none;
-    overflow: hidden;
+    z-index: 9999;
   }
 
-  /* Individual Droplets */
-  .blood-drip {
-    position: absolute;
-    top: -20px;
-    width: 8px;
-    height: 12px;
-    background: #e11d48;
-    border-radius: 0 50% 50% 50%;
-    transform: rotate(45deg);
-    /* Teardrop shape */
-    opacity: 0;
-    filter: drop-shadow(0 0 3px rgba(225, 29, 72, 0.8));
-    animation: dripFall linear infinite;
+  /* Forces all cards to be the same size and not stretch */
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+    /* Prevents stretching to fill row height */
   }
 
-  /* Randomize droplet sizes and speeds via nth-child */
-  .blood-drip:nth-child(3n) {
-    width: 10px;
-    height: 14px;
-    opacity: 0.9;
+  .resource-card {
+    background: #0a0a0a;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 12px;
+    height: 280px;
+    /* Adjust this height to your preference */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
   }
 
-  .blood-drip:nth-child(2n) {
-    width: 6px;
-    height: 9px;
-    opacity: 0.7;
+  /* KILL the dark blurry circle effect */
+  body::after,
+  .vignette,
+  [class*="vignette"],
+  [class*="overlay-pulse"] {
+    display: none !important;
+    animation: none !important;
   }
 
-  .blood-drip:nth-child(5n) {
-    width: 12px;
-    height: 16px;
-    opacity: 0.8;
+  /* Make the Search Bar stand out professionally */
+  input[type="text"] {
+    background-color: #1a0505 !important;
+    border: 1px solid #ef4444 !important;
+    color: #f1f5f9 !important;
   }
 
-  @keyframes dripFall {
-    0% {
-      top: -10%;
-      opacity: 0;
-      transform: rotate(45deg) scale(0.5);
-    }
-
-    10% {
-      opacity: 0.9;
-      transform: rotate(45deg) scale(1);
-    }
-
-    80% {
-      opacity: 0.9;
-    }
-
-    100% {
-      top: 110vh;
-      opacity: 0;
-      transform: rotate(45deg) scale(0.8);
-    }
-  }
-}
-
-.font-heading {
-  font-family: 'Grenze Gotisch', cursive;
-  letter-spacing: 0.05em;
-  font-weight: 500;
-}
-
-.font-display {
-  font-family: 'Space Mono', monospace;
-}
-
-/* Animations */
-@keyframes flicker {
-
-  0%,
-  100% {
-    opacity: 1;
+  /* Premium Neon Button Look */
+  .upload-btn-premium {
+    background: rgba(225, 29, 72, 0.1) !important;
+    backdrop-filter: blur(10px);
+    border: 2px solid #ef4444 !important;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+    transition: all 0.3s ease;
   }
 
-  50% {
-    opacity: 0.8;
+  /* FINAL KILL-SWITCH FOR ALL FLICKERING */
+  *,
+  *::before,
+  *::after {
+    animation-iteration-count: 0 !important;
+    animation-duration: 0s !important;
+    transition: none !important;
   }
 
-  25% {
-    opacity: 0.9;
+  /* Stable Search Bar */
+  /* Scoped Search Bar Style (Safe) */
+  .search-input-global {
+    background-color: #1a0a0a !important;
+    border: 2px solid #e11d48 !important;
+    color: #f8fafc !important;
+    opacity: 1 !important;
   }
 
-  75% {
-    opacity: 0.85;
-  }
-}
-
-@keyframes glitch {
-  0% {
-    transform: translate(0);
-    text-shadow: none;
+  /* Stable Subheading */
+  .subheading-text {
+    color: #e2e8f0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
-  20% {
-    transform: translate(-2px, 2px);
-    text-shadow: 2px 0 #00f, -2px 0 #f00;
+  /* FORCE ZERO FLICKER NATIONWIDE */
+  * {
+    animation: none !important;
+    transition: transform 0.2s ease, background-color 0.2s ease !important;
+    /* Only smooth movement, no opacity blinks */
   }
 
-  40% {
-    transform: translate(2px, -2px);
-    text-shadow: -2px 0 #00f, 2px 0 #f00;
+  /* Center the Hero Content */
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 4rem 1rem;
   }
 
-  60% {
-    transform: translate(0);
-    text-shadow: none;
+  /* The 'Portal' Button Style */
+  .stranger-button {
+    background: rgba(45, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    border: 2px solid #ff0000;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000;
+    transition: all 0.4s ease-in-out;
   }
 
-  80% {
-    transform: translate(2px, 2px);
-    text-shadow: 2px 0 #00f, -2px 0 #f00;
-  }
-
-  100% {
-    transform: translate(0);
-    text-shadow: none;
-  }
-}
-
-.animate-flicker {
-  animation: flicker 4s infinite;
-}
-
-.animate-glitch {
-  animation: glitch 3s infinite alternate-reverse;
-}
-
-/* Add a subtle grain texture to make it look less 'flat' */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
-  opacity: 0.03;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-/* Forces all cards to be the same size and not stretch */
-.resource-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
-  align-items: start;
-  /* Prevents stretching to fill row height */
-}
-
-.resource-card {
-  background: #0a0a0a;
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  border-radius: 12px;
-  height: 280px;
-  /* Adjust this height to your preference */
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s ease;
-}
-
-/* KILL the dark blurry circle effect */
-body::after,
-.vignette,
-[class*="vignette"],
-[class*="overlay-pulse"] {
-  display: none !important;
-  animation: none !important;
-}
-
-/* Make the Search Bar stand out professionally */
-input[type="text"] {
-  background-color: #1a0505 !important;
-  border: 1px solid #ef4444 !important;
-  color: #f1f5f9 !important;
-}
-
-/* Premium Neon Button Look */
-.upload-btn-premium {
-  background: rgba(225, 29, 72, 0.1) !important;
-  backdrop-filter: blur(10px);
-  border: 2px solid #ef4444 !important;
-  box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
-  transition: all 0.3s ease;
-}
-
-/* FINAL KILL-SWITCH FOR ALL FLICKERING */
-*,
-*::before,
-*::after {
-  animation-iteration-count: 0 !important;
-  animation-duration: 0s !important;
-  transition: none !important;
-}
-
-/* Stable Search Bar */
-/* Scoped Search Bar Style (Safe) */
-.search-input-global {
-  background-color: #1a0a0a !important;
-  border: 2px solid #e11d48 !important;
-  color: #f8fafc !important;
-  opacity: 1 !important;
-}
-
-/* Stable Subheading */
-.subheading-text {
-  color: #e2e8f0 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* FORCE ZERO FLICKER NATIONWIDE */
-* {
-  animation: none !important;
-  transition: transform 0.2s ease, background-color 0.2s ease !important;
-  /* Only smooth movement, no opacity blinks */
-}
-
-/* Center the Hero Content */
-.hero-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1.5rem;
-  padding: 4rem 1rem;
-}
-
-/* The 'Portal' Button Style */
-.stranger-button {
-  background: rgba(45, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  border: 2px solid #ff0000;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000;
-  transition: all 0.4s ease-in-out;
-}
-
-.stranger-button:hover {
-  box-shadow: 0 0 30px #ff0000, inset 0 0 20px #ff0000;
-  transform: scale(1.05);
-  background: #ff0000;
-}
-
-/* Neon Artifact Voting Style */
-.vote-container {
-  background: rgba(255, 255, 255, 0.03);
-  /* Nearly invisible track */
-  border-radius: 50px;
-  padding: 4px;
-  border: 1px solid rgba(225, 29, 72, 0.1);
-}
-
-.upvote-active {
-  color: #ef4444 !important;
-  filter: drop-shadow(0 0 8px #ef4444);
-}
-
-.downvote-active {
-  color: #6366f1 !important;
-  filter: drop-shadow(0 0 8px #6366f1);
-}
-
-/* Gothic Logo Candlelight Flicker */
-.goth-logo {
-  color: #e11d48;
-  filter: drop-shadow(0 0 10px #e11d48);
-  animation: candle-flicker 4s infinite alternate;
-}
-
-@keyframes candle-flicker {
-
-  0%,
-  100% {
-    filter: drop-shadow(0 0 10px #e11d48);
-    transform: scale(1);
-  }
-
-  50% {
-    filter: drop-shadow(0 0 25px #ff0000);
+  .stranger-button:hover {
+    box-shadow: 0 0 30px #ff0000, inset 0 0 20px #ff0000;
     transform: scale(1.05);
+    background: #ff0000;
   }
-}
 
-/* Gothic Page Background */
-/* Gothic Page Background - Clean Reset */
-body {
-  background-color: #050505 !important;
-  /* Image is handled by .gothic-bg class in App.jsx */
-}
+  /* Neon Artifact Voting Style */
+  .vote-container {
+    background: rgba(255, 255, 255, 0.03);
+    /* Nearly invisible track */
+    border-radius: 50px;
+    padding: 4px;
+    border: 1px solid rgba(225, 29, 72, 0.1);
+  }
 
-/* The Blood Drips */
-.blood-drip-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-  /* Above body bg, below content */
-  /* We will use the React loop for individual drips, 
+  .upvote-active {
+    color: #ef4444 !important;
+    filter: drop-shadow(0 0 8px #ef4444);
+  }
+
+  .downvote-active {
+    color: #6366f1 !important;
+    filter: drop-shadow(0 0 8px #6366f1);
+  }
+
+  /* Gothic Logo Candlelight Flicker */
+  .goth-logo {
+    color: #e11d48;
+    filter: drop-shadow(0 0 10px #e11d48);
+    animation: candle-flicker 4s infinite alternate;
+  }
+
+  @keyframes candle-flicker {
+
+    0%,
+    100% {
+      filter: drop-shadow(0 0 10px #e11d48);
+      transform: scale(1);
+    }
+
+    50% {
+      filter: drop-shadow(0 0 25px #ff0000);
+      transform: scale(1.05);
+    }
+  }
+
+  /* Gothic Page Background */
+  /* Gothic Page Background - Clean Reset */
+  body {
+    background-color: #050505 !important;
+    /* Image is handled by .gothic-bg class in App.jsx */
+  }
+
+  /* The Blood Drips */
+  .blood-drip-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    /* Above body bg, below content */
+    /* We will use the React loop for individual drips, 
      but this container captures the user's manual class attempt if needed, 
      though we use .blood-container in App.jsx usually. 
      Let's map .blood-container to this or vice versa. */
-}
+  }
+
+  /* Add this to your main CSS file */
+  .blood-drip {
+    width: 4px;
+    background: #880808;
+    position: absolute;
+    top: 0;
+    border-radius: 0 0 5px 5px;
+    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.5));
+  }
+
+  /* The "Gooey" Container */
+  .blood-container {
+    filter: url('#goo');
+    /* Requires an SVG filter in your HTML */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
