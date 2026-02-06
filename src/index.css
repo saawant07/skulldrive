@@ -328,3 +328,57 @@
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(136, 8, 8, 0.8);
 }
+
+/* Restricts drips to the upper half of the screen only */
+@keyframes ooze-down {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    /* Randomize these in your component for uneven lengths */
+    height: 45vh;
+  }
+}
+
+.blood-drip {
+  animation: ooze-down 15s forwards;
+  /* 'forwards' keeps it stuck at the bottom of the drip */
+  max-height: 50vh !important;
+  /* Hard limit to prevent touching the cards */
+}
+
+/* Removes the red wave and forces drips to stay */
+.blood-reservoir-top {
+  display: none !important;
+  /* Kills the wavy pattern */
+}
+
+@keyframes bleed-and-stay {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    /* Each drip will stop at its specific height set in JS */
+    height: var(--final-height);
+  }
+}
+
+.gothic-drip {
+  /* This ensures the drip stays at 100% of the animation forever */
+  animation-fill-mode: forwards !important;
+  animation-iteration-count: 1 !important;
+  animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19) !important;
+  /* Fast acceleration */
+}

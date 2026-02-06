@@ -128,49 +128,26 @@ function App() {
       {/* Gothic Background */}
       <div className="gothic-bg" />
 
-      {/* Organic Blood Reservoir (Wavy Top) */}
-      <div className="fixed top-0 left-0 w-full z-50 pointer-events-none filter drop-shadow-[0_5px_5px_rgba(225,29,72,0.3)]">
-        <svg
-          viewBox="0 0 1440 120"
-          className="w-full h-auto min-h-[40px] object-cover"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="#880808"
-            d="M0,0 L1440,0 L1440,60 C1380,90 1320,40 1260,70 C1200,100 1140,50 1080,80 C1020,110 960,60 900,90 C840,120 780,50 720,80 C660,110 600,40 540,70 C480,100 420,50 360,80 C300,110 240,60 180,90 C120,120 60,50 0,80 Z"
-          />
-        </svg>
-      </div>
-
-      {/* Complex Organic Blood Drips - Viscous Gothic Ooze */}
+      {/* Sparse Viscous Gothic Drips (Limited Range & Density) */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-50">
-        {[...Array(15)].map((_, i) => {
-          // Randomized widths (3px - 12px)
-          const width = 3 + Math.random() * 9;
+        {[4, 15, 28, 62, 78, 88, 96].map((leftPosition, i) => {
+          // Randomized widths (4px - 10px) - slightly thicker on average
+          const width = 4 + Math.random() * 6;
           const isThick = width > 7;
 
-          // Uneven distribution (clustering)
-          // We'll use a mix of random and fixed zones to create clusters
-          let left;
-          if (i < 5) left = 10 + Math.random() * 15; // Cluster left
-          else if (i < 10) left = 70 + Math.random() * 20; // Cluster right
-          else left = Math.random() * 100; // Scattered
-
           // Animation props
-          const duration = 15 + Math.random() * 30; // 15s - 45s
-          const delay = Math.random() * 20;
-          const finalHeight = 30 + Math.random() * 25; // 30vh - 55vh
+          const duration = 2 + Math.random() * 3; // 2s - 5s (High Speed Burst)
+          const delay = Math.random() * 2; // Minimal delay for immediate impact
+          const finalHeight = 30 + Math.random() * 20; // 30vh - 50vh (Strict limit)
 
           return (
-            <div key={i} className="absolute top-0 h-full" style={{ left: `${left}%`, width: `${width}px` }}>
+            <div key={i} className="absolute top-0 h-full" style={{ left: `${leftPosition}%`, width: `${width}px` }}>
               <motion.div
                 initial={{ height: "0vh" }}
-                animate={{ height: ["0vh", `${finalHeight}vh`] }}
+                animate={{ height: `${finalHeight}vh` }} // Animate once and stay
                 transition={{
                   duration: duration,
-                  repeat: Infinity,
-                  repeatType: "reverse", // Ooze down then retract/dry up
-                  ease: "easeInOut",
+                  ease: "easeOut", // Slow down at the end (settle)
                   delay: delay
                 }}
                 className="absolute top-0 w-full rounded-b-full relative"
@@ -179,19 +156,19 @@ function App() {
                   boxShadow: '0 0 5px rgba(26, 5, 5, 0.8)'
                 }}
               >
-                {/* Bulbous Head */}
+                {/* Bulbous Head - Static Hanging Drop */}
                 <div
                   className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-[#4a0404]"
                   style={{
-                    width: '180%', // Wider than stem
-                    height: `${width * 1.5}px`,
+                    width: '200%', // Very bulbous
+                    height: `${width * 2}px`,
                     boxShadow: '0 2px 4px rgba(0,0,0,0.4)'
                   }}
                 />
 
-                {/* Specular Highlight (The "Wet" Look) - Only on thick drips */}
+                {/* Specular Highlight (Wet Look) - Only on thick drips */}
                 {isThick && (
-                  <div className="absolute bottom-2 left-[20%] w-[2px] h-[15%] bg-white/80 blur-[0.5px] rounded-full z-10" />
+                  <div className="absolute bottom-2 left-[20%] w-[2px] h-[20%] bg-white/80 blur-[0.5px] rounded-full z-10" />
                 )}
               </motion.div>
             </div>
