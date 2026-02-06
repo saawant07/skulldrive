@@ -172,6 +172,15 @@
     animation-iteration-count: 0 !important;
     animation-duration: 0s !important;
     transition: none !important;
+    opacity: 1 !important;
+    /* Force opacity 1 */
+  }
+
+  /* Specific overrides for specific animations we want to kill */
+  .animate-pulse,
+  .animate-flicker {
+    animation: none !important;
+    opacity: 1 !important;
   }
 
   /* Stable Search Bar */

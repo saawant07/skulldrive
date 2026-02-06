@@ -21,10 +21,10 @@ export function ResourceCard({ resource, onView, onDelete, onVote }) {
             exit={{ opacity: 0, scale: 0.95 }}
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="group relative h-full flex flex-col bg-black/40 backdrop-blur-sm border border-red-900/50 rounded-xl p-5 hover:bg-white/5 transition-all overflow-hidden min-h-[220px] animate-[pulse_4s_ease-in-out_infinite] hover:animate-none"
+            className="group relative h-full flex flex-col bg-black/90 backdrop-blur-xl border border-red-900/50 rounded-xl p-5 hover:bg-black/95 transition-all overflow-hidden min-h-[220px]"
         >
             {/* Inner Glow Hack */}
-            <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-red-500/10 pointer-events-none group-hover:animate-flicker" />
+            <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-red-500/10 pointer-events-none" />
 
             {/* Gradient Blob for "Premium" feel - kept subtle */}
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-red-900/20 rounded-full blur-3xl group-hover:bg-red-600/10 transition-colors" />
@@ -42,7 +42,7 @@ export function ResourceCard({ resource, onView, onDelete, onVote }) {
                 <div className="flex flex-col flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2 mb-3">
                         <div className="flex items-center gap-2">
-                            <div className="p-2 bg-red-950/30 rounded-lg text-rose-500 ring-1 ring-red-900/40 group-hover:text-rose-400 transition-colors group-hover:animate-flicker">
+                            <div className="p-2 bg-red-950/30 rounded-lg text-rose-500 ring-1 ring-red-900/40 group-hover:text-rose-400 transition-colors">
                                 <FileText className="h-5 w-5" />
                             </div>
                             <span className="inline-flex items-center rounded-md bg-red-900/10 px-2.5 py-1 text-xs font-medium text-red-400 ring-1 ring-red-500/20">
@@ -59,7 +59,7 @@ export function ResourceCard({ resource, onView, onDelete, onVote }) {
 
                         <div className="pt-3 mt-1 border-t border-white/5 space-y-2">
                             <div className="flex flex-wrap gap-2 text-xs font-medium">
-                                <span className="truncate max-w-[150px] bg-red-950/30 px-2 py-1 rounded text-red-200 border border-red-900/30" title={resource.file_name}>
+                                <span className="truncate max-w-[150px] bg-red-950/30 px-2 py-1 rounded text-slate-200 border border-red-900/30" title={resource.file_name}>
                                     {resource.file_name}
                                 </span>
                                 <span className="bg-rose-900/20 text-rose-300 px-2 py-1 rounded border border-rose-800/20">

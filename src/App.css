@@ -180,3 +180,16 @@ body {
     opacity: 0;
   }
 }
+
+/* Heavy Blood Drip Head */
+.drip::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -2px;
+  width: 8px;
+  height: 8px;
+  background: #880808;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ff0000;
+}

@@ -133,21 +133,22 @@ function App() {
 
       {/* Framer Motion Blood Drips */}
       <div className="fixed top-2 left-0 w-full h-full pointer-events-none z-50">
-        {[...Array(12)].map((_, i) => (
+        {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
             initial={{ height: "0vh" }}
             animate={{ height: ["0vh", "100vh"] }}
             transition={{
-              duration: 20 + Math.random() * 10, // 20-30s slow duration
+              duration: 20 + Math.random() * 10,
               repeat: Infinity,
               ease: "linear",
-              delay: Math.random() * 20
+              delay: Math.random() * 15 // Staggered delay
             }}
-            className="absolute bg-[#880808] rounded-b-full shadow-[0_0_10px_#ff0000]"
+            className="absolute rounded-b-full shadow-[0_0_10px_#ff0000]"
             style={{
-              left: `${(i + 1) * (100 / 13)}%`,
-              width: `${4 + Math.random() * 4}px`, // 4-8px width
+              left: `${(i + 1) * (100 / 16)}%`,
+              width: `${2 + Math.random() * 4}px`, // 2px to 6px width
+              background: 'linear-gradient(to bottom, #880808, transparent)', // Realistic drying effect
               opacity: 0.9
             }}
           />
@@ -191,12 +192,12 @@ function App() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             whileHover={{ rotate: [0, -5, 5, -5, 5, 0], transition: { duration: 0.5 } }}
             style={{ filter: 'drop-shadow(0 0 20px #e11d48)' }}
-            className="mb-6"
+            className="mb-12" // Added mb-12
           >
             <Skull size={80} className="text-red-600" />
           </motion.div>
 
-          <h1 className="text-6xl md:text-8xl font-heading font-black text-white tracking-widest uppercase drop-shadow-[0_0_25px_#e11d48] mb-4" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
+          <h1 className="text-7xl md:text-9xl font-heading font-black text-white tracking-widest uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
             Acadrive
           </h1>
 
