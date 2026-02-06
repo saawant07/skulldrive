@@ -78,8 +78,7 @@ export function ResourceCard({ resource, onView, onDelete, onVote }) {
                             {resource.owner_id === getUserId() && (
                                 <Button
                                     size="icon"
-                                    variant="danger"
-                                    className="h-9 w-9 rounded-xl hover:bg-red-500/10 text-emerald-500/70 hover:text-red-500"
+                                    className="h-9 w-9 rounded-xl bg-red-950/40 border border-red-900/50 text-red-400 hover:bg-red-900/60 hover:text-red-200"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         onDelete(resource);
@@ -92,7 +91,7 @@ export function ResourceCard({ resource, onView, onDelete, onVote }) {
                                 whileTap={{ scale: 0.95 }}
                                 size="sm"
                                 variant="secondary"
-                                className="h-9 text-xs px-4 rounded-xl shadow-md bg-slate-800 border border-slate-700 hover:bg-slate-700 text-white"
+                                className="h-9 text-xs px-4 rounded-xl shadow-md bg-red-950/40 border border-red-500/50 text-white hover:bg-red-900/60 hover:border-red-400 transition-all font-bold"
                                 onClick={() => onView(resource)}
                             >
                                 <Eye className="h-3 w-3 mr-1.5" />

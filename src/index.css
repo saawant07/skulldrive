@@ -206,3 +206,22 @@ input[type="text"] {
   transform: scale(1.05);
   background: #ff0000;
 }
+
+/* Neon Artifact Voting Style */
+.vote-container {
+  background: rgba(255, 255, 255, 0.03);
+  /* Nearly invisible track */
+  border-radius: 50px;
+  padding: 4px;
+  border: 1px solid rgba(225, 29, 72, 0.1);
+}
+
+.upvote-active {
+  color: #ef4444 !important;
+  filter: drop-shadow(0 0 8px #ef4444);
+}
+
+.downvote-active {
+  color: #6366f1 !important;
+  filter: drop-shadow(0 0 8px #6366f1);
+}

@@ -59,29 +59,31 @@ export function VoteButtons({ resource, onVote }) {
     const isDownvoted = hasVoted === 'down';
 
     return (
-        <div className="flex flex-col items-center gap-0.5 mr-3">
+        <div className="flex flex-col items-center gap-2 mr-4">
             <motion.button
+                whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={(e) => { e.stopPropagation(); handleVote('up'); }}
                 disabled={!!hasVoted || voting}
-                className={`p-1 rounded transition-colors ${isUpvoted ? 'text-orange-500 bg-orange-100' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-200'}`}
+                className={`transition-all duration-300 ${isUpvoted ? 'text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]' : 'text-slate-500 hover:text-red-400'}`}
                 title="Upvote"
             >
-                <ArrowBigUp className={`h-6 w-6 ${isUpvoted ? 'fill-current' : ''}`} />
+                <ArrowBigUp className={`h-8 w-8 stroke-[1.5px] ${isUpvoted ? 'fill-red-500/20' : ''}`} />
             </motion.button>
 
-            <span className={`text-xs font-bold ${isUpvoted ? 'text-orange-600' : isDownvoted ? 'text-slate-500' : 'text-slate-700'}`}>
+            <span className="text-sm font-bold text-slate-300 font-display">
                 {(resource.score || 0)}
             </span>
 
             <motion.button
+                whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={(e) => { e.stopPropagation(); handleVote('down'); }}
                 disabled={!!hasVoted || voting}
-                className={`p-1 rounded transition-colors ${isDownvoted ? 'text-blue-500 bg-blue-100' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-200'}`}
+                className={`transition-all duration-300 ${isDownvoted ? 'text-indigo-500 drop-shadow-[0_0_8px_rgba(99,102,241,0.8)]' : 'text-slate-500 hover:text-indigo-400'}`}
                 title="Downvote"
             >
-                <ArrowBigDown className={`h-6 w-6 ${isDownvoted ? 'fill-current' : ''}`} />
+                <ArrowBigDown className={`h-8 w-8 stroke-[1.5px] ${isDownvoted ? 'fill-indigo-500/20' : ''}`} />
             </motion.button>
         </div>
     );
