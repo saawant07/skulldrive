@@ -329,4 +329,23 @@
   box-shadow: 0 0 10px rgba(136, 8, 8, 0.8);
 }
 
+/* Fixes the invisible dropdown text in the Gothic theme */
+select,
+option,
+input {
+  background-color: #1a0505 !important;
+  /* Dark Maroon */
+  color: #f8fafc !important;
+  /* Pure visible text */
+  border: 1px solid #e11d48 !important;
+}
+
+/* Fixes the labels like 'Semester' and 'Resource Type' */
+label {
+  color: #cbd5e1 !important;
+  /* Silver-grey for readability */
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
 /* Clean end of file */
