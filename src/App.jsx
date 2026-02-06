@@ -25,6 +25,7 @@ function App() {
       let query = supabase
         .from('resources')
         .select('*')
+        .order('score', { ascending: false })
         .order('created_at', { ascending: false });
 
       if (searchQuery) {
@@ -54,6 +55,12 @@ function App() {
       setLoading(false);
     }
   }, [searchQuery, filters, showMyUploads]);
+
+
+
+  const handleVote = (updatedResource) => {
+    setResources(prev => prev.map(r => r.id === updatedResource.id ? updatedResource : r));
+  };
 
   const handleDelete = async (resource) => {
     if (!window.confirm("Are you sure you want to delete this file?")) return;
@@ -151,6 +158,7 @@ function App() {
                 resource={res}
                 onView={setViewResource}
                 onDelete={handleDelete}
+                onVote={handleVote}
               />
             ))}
           </div>

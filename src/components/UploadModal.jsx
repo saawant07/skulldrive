@@ -4,6 +4,7 @@ import { Button } from './ui/Button';
 import { Input } from './ui/Input';
 import { supabase } from '../lib/supabase';
 import { getUserId } from '../lib/identity';
+import { calculateFileHash } from '../lib/hash';
 
 export function UploadModal({ isOpen, onClose, onUploadSuccess }) {
     const [loading, setLoading] = useState(false);
@@ -44,7 +45,26 @@ export function UploadModal({ isOpen, onClose, onUploadSuccess }) {
         try {
             if (!file) throw new Error("Please select a file.");
 
-            // 1. Upload to Supabase Storage
+            // 1. Calculate Hash & Check for Duplicates
+            const fileHash = await calculateFileHash(file);
+
+            const { data: existingFile, error: checkError } = await supabase
+                .from('resources')
+                .select('id')
+                .eq('file_hash', fileHash)
+                .single();
+
+            if (checkError && checkError.code !== 'PGRST116') { // PGRST116 is "Row not found"
+                throw checkError;
+            }
+
+            if (existingFile) {
+                setError('This exact file already exists.');
+                setLoading(false);
+                return;
+            }
+
+            // 2. Upload to Supabase Storage
             // Sanitize filename to avoid weird character issues
             const fileExt = file.name.split('.').pop();
             const fileName = `${Date.now()}-${file.name.replace(/[^a-z0-9.]/gi, '_')}`;
@@ -56,7 +76,7 @@ export function UploadModal({ isOpen, onClose, onUploadSuccess }) {
 
             if (uploadError) throw uploadError;
 
-            // 2. Get Public URL
+            // 3. Get Public URL
             const { data: { publicUrl } } = supabase.storage
                 .from('pdfs')
                 .getPublicUrl(filePath);
@@ -69,7 +89,8 @@ export function UploadModal({ isOpen, onClose, onUploadSuccess }) {
                 resource_type: formData.resourceType,
                 file_name: file.name,
                 file_url: publicUrl,
-                owner_id: getUserId()
+                owner_id: getUserId(),
+                file_hash: fileHash
             });
 
             if (dbError) throw dbError;
