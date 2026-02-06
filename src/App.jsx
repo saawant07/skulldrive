@@ -128,31 +128,66 @@ function App() {
       {/* Gothic Background */}
       <div className="gothic-bg" />
 
-      {/* Blood Reservoir */}
-      <div className="fixed top-0 left-0 w-full h-2 bg-[#880808] z-50 shadow-[0_0_20px_#880808]" />
-
-      {/* Framer Motion Blood Drips */}
-      <div className="fixed top-2 left-0 w-full h-full pointer-events-none z-50">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ height: "0vh" }}
-            animate={{ height: ["0vh", "100vh"] }}
-            transition={{
-              duration: 20 + Math.random() * 10,
-              repeat: Infinity,
-              ease: "linear",
-              delay: Math.random() * 15 // Staggered delay
-            }}
-            className="absolute rounded-b-full shadow-[0_0_10px_#ff0000]"
-            style={{
-              left: `${(i + 1) * (100 / 16)}%`,
-              width: `${2 + Math.random() * 4}px`, // 2px to 6px width
-              background: 'linear-gradient(to bottom, #880808, transparent)', // Realistic drying effect
-              opacity: 0.9
-            }}
+      {/* Organic Blood Reservoir (Wavy Top) */}
+      <div className="fixed top-0 left-0 w-full z-50 pointer-events-none filter drop-shadow-[0_5px_5px_rgba(225,29,72,0.3)]">
+        <svg
+          viewBox="0 0 1440 120"
+          className="w-full h-auto min-h-[40px] object-cover"
+          preserveAspectRatio="none"
+        >
+          <path
+            fill="#880808"
+            d="M0,0 L1440,0 L1440,60 C1380,90 1320,40 1260,70 C1200,100 1140,50 1080,80 C1020,110 960,60 900,90 C840,120 780,50 720,80 C660,110 600,40 540,70 C480,100 420,50 360,80 C300,110 240,60 180,90 C120,120 60,50 0,80 Z"
           />
-        ))}
+        </svg>
+      </div>
+
+      {/* Complex Organic Blood Drips */}
+      <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-50">
+        {[...Array(20)].map((_, i) => {
+          const width = 2 + Math.random() * 6; // 2px to 8px
+          const delay = Math.random() * 15;
+          const duration = 15 + Math.random() * 15; // Slow, viscous
+          const left = (i + 1) * (100 / 21);
+
+          return (
+            <div key={i} className="absolute top-0 h-full" style={{ left: `${left}%`, width: `${width}px` }}>
+              {/* Main Drip */}
+              <motion.div
+                initial={{ height: "0vh" }}
+                animate={{ height: ["0vh", "110vh"] }}
+                transition={{
+                  duration: duration,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: delay
+                }}
+                className="absolute top-0 w-full rounded-b-full"
+                style={{
+                  background: 'linear-gradient(to right, #4a0404, #e11d48, #4a0404)', // Cylinder 3D effect
+                  boxShadow: '0 0 10px rgba(225, 29, 72, 0.5)'
+                }}
+              >
+                {/* Specular Highlight (The "Wet" Look) */}
+                <div className="absolute bottom-2 left-[20%] w-[30%] h-[10%] bg-white/60 blur-[1px] rounded-full" />
+              </motion.div>
+
+              {/* Secondary Trailing Drip (Follower) */}
+              <motion.div
+                initial={{ height: "0vh", opacity: 0 }}
+                animate={{ height: ["0vh", "110vh"], opacity: [0, 1, 0] }}
+                transition={{
+                  duration: duration * 0.8, // Slightly faster
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: delay + 5
+                }}
+                className="absolute top-0 w-[60%] left-[20%] rounded-b-full bg-[#e11d48]"
+                style={{ opacity: 0.7 }}
+              />
+            </div>
+          );
+        })}
       </div>
 
       {/* Spores Layer */}
