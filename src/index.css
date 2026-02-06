@@ -217,7 +217,8 @@ input[type="text"] {
 }
 
 /* Stable Search Bar */
-input[type="text"] {
+/* Scoped Search Bar Style (Safe) */
+.search-input-global {
   background-color: #1a0a0a !important;
   border: 2px solid #e11d48 !important;
   color: #f8fafc !important;
