@@ -147,3 +147,27 @@ input[type="text"] {
   box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
   transition: all 0.3s ease;
 }
+
+/* FINAL KILL-SWITCH FOR ALL FLICKERING */
+*,
+*::before,
+*::after {
+  animation-iteration-count: 0 !important;
+  animation-duration: 0s !important;
+  transition: none !important;
+}
+
+/* Stable Search Bar */
+input[type="text"] {
+  background-color: #1a0a0a !important;
+  border: 2px solid #e11d48 !important;
+  color: #f8fafc !important;
+  opacity: 1 !important;
+}
+
+/* Stable Subheading */
+.subheading-text {
+  color: #e2e8f0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
