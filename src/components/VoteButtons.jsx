@@ -34,11 +34,11 @@ export function VoteButtons({ resource, onVote }) {
             // Optimistic update
             onVote({ ...resource, ...updates });
 
-            // Persist to DB
-            const { error } = await supabase
-                .from('resources')
-                .update(updates)
-                .eq('id', resource.id);
+            // Call RPC function
+            const { error } = await supabase.rpc('increment_vote', {
+                row_id: resource.id,
+                vote_type: type
+            });
 
             if (error) throw error;
 
