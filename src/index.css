@@ -188,3 +188,21 @@ input[type="text"] {
   gap: 1.5rem;
   padding: 4rem 1rem;
 }
+
+/* The 'Portal' Button Style */
+.stranger-button {
+  background: rgba(45, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  border: 2px solid #ff0000;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000;
+  transition: all 0.4s ease-in-out;
+}
+
+.stranger-button:hover {
+  box-shadow: 0 0 30px #ff0000, inset 0 0 20px #ff0000;
+  transform: scale(1.05);
+  background: #ff0000;
+}

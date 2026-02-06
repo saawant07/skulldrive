@@ -165,8 +165,8 @@ function App() {
           </p>
 
           <div className="mt-8 flex justify-center">
-            <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-[#e11d48] border-2 border-white shadow-[0_0_25px_rgba(225,29,72,0.6)] hover:scale-105 transition-transform text-white rounded-xl">
-              <Upload className="mr-3 h-6 w-6" />
+            <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-red-950/40 backdrop-blur-md border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">
+              <Upload className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
               Upload Resource
             </Button>
           </div>
