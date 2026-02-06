@@ -128,26 +128,39 @@ function App() {
       {/* Gothic Background */}
       <div className="gothic-bg" />
 
-      {/* Sparse Viscous Gothic Drips (Limited Range & Density) */}
+      {/* Cluster Heavy Central Drips (Slow Permanent Ooze) */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-50">
-        {[4, 15, 28, 62, 78, 88, 96].map((leftPosition, i) => {
-          // Randomized widths (4px - 10px) - slightly thicker on average
-          const width = 4 + Math.random() * 6;
-          const isThick = width > 7;
+        {/* Define Drip Positions: Central Cluster + Sparse Edges */}
+        {[
+          // Outer Edges (Sparse)
+          { left: 4, width: 4 },
+          { left: 96, width: 5 },
+          { left: 12, width: 6 },
+          { left: 88, width: 4 },
+
+          // Central Cluster (Dense & Heavy)
+          { left: 35, width: 10 },
+          { left: 42, width: 5 }, // Thin trailer
+          { left: 48, width: 12 }, // Heavy Core
+          { left: 55, width: 4 },
+          { left: 62, width: 11 }, // Heavy Core
+          { left: 68, width: 6 }
+        ].map((drip, i) => {
+          const isThick = drip.width > 7;
 
           // Animation props
-          const duration = 2 + Math.random() * 3; // 2s - 5s (High Speed Burst)
-          const delay = Math.random() * 2; // Minimal delay for immediate impact
-          const finalHeight = 30 + Math.random() * 20; // 30vh - 50vh (Strict limit)
+          const duration = 15 + Math.random() * 3; // 15s - 18s (Slow Ooze)
+          const delay = Math.random() * 5; // Staggered starts
+          const finalHeight = 30 + Math.random() * 20; // 30vh - 50vh (Permanent Stop)
 
           return (
-            <div key={i} className="absolute top-0 h-full" style={{ left: `${leftPosition}%`, width: `${width}px` }}>
+            <div key={i} className="absolute top-0 h-full" style={{ left: `${drip.left}%`, width: `${drip.width}px` }}>
               <motion.div
                 initial={{ height: "0vh" }}
                 animate={{ height: `${finalHeight}vh` }} // Animate once and stay
                 transition={{
                   duration: duration,
-                  ease: "easeOut", // Slow down at the end (settle)
+                  ease: [0.25, 0.1, 0.25, 1], // Slow, viscous easing
                   delay: delay
                 }}
                 className="absolute top-0 w-full rounded-b-full relative"
@@ -160,8 +173,8 @@ function App() {
                 <div
                   className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-[#4a0404]"
                   style={{
-                    width: '200%', // Very bulbous
-                    height: `${width * 2}px`,
+                    width: '180%', // Bulbous
+                    height: `${drip.width * 1.5}px`,
                     boxShadow: '0 2px 4px rgba(0,0,0,0.4)'
                   }}
                 />
