@@ -12,6 +12,7 @@ import { Button } from './components/ui/Button';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import CustomCursor from './components/CustomCursor';
+import { BloodRain } from './components/BloodRain';
 
 function App() {
   const [resources, setResources] = useState([]);
@@ -130,146 +131,64 @@ function App() {
       {/* Gothic Background */}
       <div className="gothic-bg" />
 
-      {/* Cluster Heavy Central Drips (Slow Permanent Ooze) */}
-      <div className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10">
-        {/* Define Drip Positions: Central Cluster + Sparse Edges */}
-        {[
-          // Outer Edges (Sparse)
-          { left: 4, width: 4 },
-          { left: 96, width: 5 },
-          { left: 12, width: 6 },
-          { left: 88, width: 4 },
-
-          // Central Cluster (Dense & Heavy)
-          { left: 35, width: 10 },
-          { left: 42, width: 5 }, // Thin trailer
-          { left: 48, width: 12 }, // Heavy Core
-          { left: 55, width: 4 },
-          { left: 62, width: 11 }, // Heavy Core
-          { left: 68, width: 6 }
-        ].map((drip, i) => {
-          const isThick = drip.width > 7;
-
-          // Animation props
-          const duration = 15 + Math.random() * 3; // 15s - 18s (Slow Ooze)
-          const delay = Math.random() * 5; // Staggered starts
-          const finalHeight = 30 + Math.random() * 20; // 30vh - 50vh (Permanent Stop)
-
-          return (
-            <div key={i} className="absolute top-0 h-full" style={{ left: `${drip.left}%`, width: `${drip.width}px` }}>
-              <motion.div
-                initial={{ height: "0vh" }}
-                animate={{ height: `${finalHeight}vh` }} // Animate once and stay
-                transition={{
-                  duration: duration,
-                  ease: [0.25, 0.1, 0.25, 1], // Slow, viscous easing
-                  delay: delay
-                }}
-                className="absolute top-0 w-full rounded-b-full relative"
-                style={{
-                  background: 'linear-gradient(to bottom, #1a0505, #4a0404)', // Deep Dark Maroon
-                  boxShadow: '0 0 5px rgba(26, 5, 5, 0.8)'
-                }}
-              >
-                {/* Bulbous Head - Static Hanging Drop */}
-                <div
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-[#4a0404]"
-                  style={{
-                    width: '180%', // Bulbous
-                    height: `${drip.width * 1.5}px`,
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.4)'
-                  }}
-                />
-
-                {/* Specular Highlight (Wet Look) - Only on thick drips */}
-                {isThick && (
-                  <div className="absolute bottom-2 left-[20%] w-[2px] h-[20%] bg-white/80 blur-[0.5px] rounded-full z-10" />
-                )}
-              </motion.div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Spores Layer */}
-
-      {/* Spores Layer */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        {[...Array(50)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              opacity: 0,
-            }}
-            animate={{
-              y: [null, Math.random() * -100],
-              x: [null, (Math.random() - 0.5) * 50],
-              opacity: [0, 0.4, 0],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              ease: "linear",
-              delay: Math.random() * 5,
-            }}
-            className="absolute w-1 h-1 bg-rose-900/40 rounded-full blur-[1px]"
-          />
-        ))}
-      </div>
 
       <div className="max-w-7xl mx-auto space-y-8 relative z-10">
 
-        {/* Header Section */}
-        <div className="text-center space-y-4 py-8 relative flex flex-col items-center">
-          <motion.img
-            src="/skull.png"
-            alt="Cursed Skull"
-            className="mb-8 w-56 md:w-80 object-contain drop-shadow-[0_0_30px_rgba(185,28,28,0.8)]"
-            animate={{
-              y: [0, -20, 0]
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
+        {/* Header Section / Hero */}
+        <div className="relative w-full h-[800px] overflow-hidden flex flex-col items-center justify-center text-center space-y-8 rounded-3xl border border-white/5 bg-black/20 backdrop-blur-sm">
+          {/* Blood Rain Background - Restricted to this container */}
+          <BloodRain className="opacity-80" />
 
-          {/* Fluid Header Scaling & Truncation Fix */}
-          <div className="w-full max-w-[100vw] overflow-hidden px-2">
-            <h1 className="text-[clamp(2.5rem,10vw,5rem)] font-heading font-black text-white tracking-tighter md:tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4 whitespace-nowrap overflow-wrap-anywhere" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
-              Skulldrive
-            </h1>
-          </div>
+          {/* Wrapper for content to ensure z-index above rain */}
+          <div className="relative z-10 flex flex-col items-center w-full max-w-4xl px-4">
+            <motion.img
+              src="/skull.png"
+              alt="Cursed Skull"
+              className="mb-8 w-56 md:w-80 object-contain drop-shadow-[0_0_30px_rgba(185,28,28,0.8)]"
+              animate={{
+                y: [0, -20, 0]
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
 
-          <h2 key="slogan-final" className="demonic-slogan text-2xl md:text-6xl font-heading font-normal tracking-wide text-balance px-4 max-w-[80%] md:max-w-4xl mx-auto">
-            Exhume the Syllabus. <br className="hidden md:block" />
-            <span className="">Study the Souls of the Passed.</span>
-          </h2>
+            {/* Fluid Header Scaling & Truncation Fix */}
+            <div className="w-full max-w-full overflow-hidden px-2">
+              <h1 className="text-[clamp(2.5rem,10vw,5rem)] font-heading font-black text-white tracking-tighter md:tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4 whitespace-nowrap overflow-wrap-anywhere" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
+                Skulldrive
+              </h1>
+            </div>
 
-          <div className="mt-8 flex justify-center">
-            <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-red-950/40 backdrop-blur-md border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">
-              <Upload className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
-              Upload Resource
-            </Button>
-          </div>
+            <h2 key="slogan-final" className="demonic-slogan text-2xl md:text-6xl font-heading font-normal tracking-wide text-balance px-4 max-w-[80%] md:max-w-4xl mx-auto">
+              Exhume the Syllabus. <br className="hidden md:block" />
+              <span className="">Study the Souls of the Passed.</span>
+            </h2>
 
-          <div className="max-w-4xl mx-auto mt-12 flex flex-col gap-4">
-            <SearchBar onSearch={setSearchQuery} />
+            <div className="mt-8 flex justify-center">
+              <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-red-950/40 backdrop-blur-md border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">
+                <Upload className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
+                Upload Resource
+              </Button>
+            </div>
 
-            <div className="flex justify-center">
-              <button
-                onClick={() => setShowMyUploads(!showMyUploads)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${showMyUploads
-                  ? 'bg-blue-100 text-blue-700'
-                  : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
-                  }`}
-              >
-                <User className="h-4 w-4" />
-                {showMyUploads ? 'Showing My Uploads' : 'My Uploads'}
-              </button>
+            <div className="max-w-4xl w-full mx-auto mt-12 flex flex-col gap-4">
+              <SearchBar onSearch={setSearchQuery} />
+
+              <div className="flex justify-center">
+                <button
+                  onClick={() => setShowMyUploads(!showMyUploads)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${showMyUploads
+                    ? 'bg-blue-100 text-blue-700'
+                    : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
+                    }`}
+                >
+                  <User className="h-4 w-4" />
+                  {showMyUploads ? 'Showing My Uploads' : 'My Uploads'}
+                </button>
+              </div>
             </div>
           </div>
         </div>
