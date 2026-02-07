@@ -13,6 +13,8 @@ import { Button } from './components/ui/Button';
 import { AnimatePresence, motion } from 'framer-motion';
 import CustomCursor from './components/CustomCursor';
 import { BloodRain } from './components/BloodRain';
+import { ArcaneRunes } from './components/ArcaneRunes';
+import { HangingChains } from './components/HangingChains';
 
 function App() {
   const [resources, setResources] = useState([]);
@@ -135,7 +137,15 @@ function App() {
       <div className="max-w-7xl mx-auto space-y-8 relative z-10">
 
         {/* Header Section / Hero */}
-        <div className="relative w-full h-[800px] overflow-hidden flex flex-col items-center justify-center text-center space-y-8 rounded-3xl border border-white/5 bg-black/20 backdrop-blur-sm">
+        <div className="relative w-full h-[800px] overflow-hidden flex flex-col items-center justify-center text-center space-y-8">
+
+          {/* Gothic Elements */}
+          <ArcaneRunes />
+          <HangingChains />
+
+          {/* Vignette Overlay */}
+          <div className="absolute inset-0 pointer-events-none z-20 bg-gradient-to-r from-black via-transparent to-black opacity-80" />
+
           {/* Blood Rain Background - Restricted to this container */}
           <BloodRain className="opacity-80" />
 
