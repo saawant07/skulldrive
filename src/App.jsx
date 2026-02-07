@@ -131,7 +131,7 @@ function App() {
       <div className="gothic-bg" />
 
       {/* Cluster Heavy Central Drips (Slow Permanent Ooze) */}
-      <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-50">
+      <div className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10">
         {/* Define Drip Positions: Central Cluster + Sparse Edges */}
         {[
           // Outer Edges (Sparse)
@@ -290,7 +290,7 @@ function App() {
             variants={containerVariants}
             initial="hidden"
             animate="show"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10"
           >
             <AnimatePresence mode="popLayout">
               {resources.map((res) => (
