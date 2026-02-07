@@ -472,4 +472,11 @@ body {
   transform-style: preserve-3d;
 }
 
+.blood-vignette {
+  background: radial-gradient(circle, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  /* Makes the blood look like it's stained onto the book */
+}
+
 /* Clean end of file */
