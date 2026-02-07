@@ -226,7 +226,7 @@ function App() {
           <motion.img
             src="/skull.png"
             alt="Cursed Skull"
-            className="mb-8 w-64 md:w-96 object-contain drop-shadow-[0_0_30px_rgba(185,28,28,0.8)]"
+            className="mb-8 w-56 md:w-80 object-contain drop-shadow-[0_0_30px_rgba(185,28,28,0.8)]"
             animate={{
               y: [0, -20, 0]
             }}
