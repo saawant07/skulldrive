@@ -10,8 +10,7 @@
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     overflow-x: hidden;
     position: relative;
-    cursor: url('/cursor.svg') 16 2, auto;
-    /* Native High-Performance Cursor */
+    cursor: none;
   }
 
   html {
@@ -220,31 +219,10 @@
 
   /* Stable Search Bar */
   /* Native High-Performance Cursor */
-  body {
-    /* Hotspot at 16 16 (center) for the dagger? Or 16 2 (tip)? 
-       The SVG path M16 2... suggests the tip is at (16, 2). 
-       Let's set hotspot to 16 2. */
-    cursor: url('/cursor.svg') 16 2, auto;
-  }
-
-  /* Interactive Elements */
-  a,
-  button,
-  input,
-  select,
-  option,
-  label,
-  .cursor-hover-target,
-  [role="button"] {
-    cursor: url('/cursor-hover.svg') 16 2, pointer;
-  }
-
   /* Force these styles on fine pointer devices */
   @media (pointer: fine) {
     * {
-      /* We don't want to force 'none' anymore. We want the custom URL.
-         However, sticking 'cursor: url...' on * is heavy and might break specificity.
-         Let's trust the body inheritance and specific tags. */
+      cursor: none !important;
     }
   }
 
