@@ -187,9 +187,9 @@ function App() {
             {/* Request Resource - Twin Style */}
             <Button
               onClick={() => setIsRequestOpen(true)}
-              className="px-10 py-5 text-xl font-bold bg-black border-2 border-red-600 shadow-[0_0_15px_rgba(220,38,38,0.5)] text-red-500 rounded-xl hover:bg-[#991b1b] hover:text-white hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 group relative overflow-hidden"
+              className="px-10 py-5 text-xl font-bold bg-black border-2 border-[#ff0000] shadow-[0_0_15px_rgba(220,38,38,0.5)] text-white rounded-xl hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 group relative overflow-hidden"
             >
-              <HelpCircle className="mr-3 h-6 w-6 group-hover:scale-110 transition-transform" />
+              <HelpCircle className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
               Request Resource
             </Button>
           </div>
