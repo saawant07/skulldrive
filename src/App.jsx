@@ -180,15 +180,15 @@ function App() {
             <span className="">Study the Souls of the Passed.</span>
           </h2>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-4 relative z-50">
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center relative z-50">
             <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-black/80 backdrop-blur-md border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">
               <Upload className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
               Upload Resource
             </Button>
-            {/* Ghost Button - Request Resource */}
+            {/* Dark Twin Button - Request Resource */}
             <button
               onClick={() => setIsRequestOpen(true)}
-              className="px-8 py-5 text-xl font-bold bg-transparent backdrop-blur-sm border-2 border-red-700/60 text-red-400 rounded-xl hover:bg-red-900/20 hover:border-red-500 hover:text-red-300 transition-all duration-300 flex items-center gap-3"
+              className="px-10 py-5 text-xl font-bold bg-black/80 backdrop-blur-md border-2 border-red-700 shadow-[0_0_15px_rgba(127,29,29,0.4)] text-red-500 rounded-xl hover:bg-red-950 hover:text-white hover:shadow-[0_0_30px_rgba(220,38,38,0.5)] hover:scale-105 transition-all duration-300 flex items-center gap-3"
             >
               <HelpCircle className="h-6 w-6" />
               Request Resource
