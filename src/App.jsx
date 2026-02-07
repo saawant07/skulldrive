@@ -179,15 +179,15 @@ function App() {
             <span className="">Study the Souls of the Passed.</span>
           </h2>
 
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center relative z-50">
+          <div className="mt-10 flex flex-row flex-wrap justify-center gap-4 items-center relative z-50">
             <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-black/80 backdrop-blur-md border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">
               <Upload className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
               Upload Resource
             </Button>
-            {/* Request Resource - Matching Upload Style */}
+            {/* Request Resource - Twin Style */}
             <Button
               onClick={() => setIsRequestOpen(true)}
-              className="px-10 py-5 text-xl font-bold bg-black/90 backdrop-blur-md border border-red-600 shadow-[0_0_20px_rgba(255,0,0,0.4)] text-red-500 rounded-xl hover:bg-[#e11d48] hover:text-white hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 group relative overflow-hidden"
+              className="px-10 py-5 text-xl font-bold bg-black border-2 border-red-600 shadow-[0_0_15px_rgba(220,38,38,0.5)] text-red-500 rounded-xl hover:bg-[#991b1b] hover:text-white hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 group relative overflow-hidden"
             >
               <HelpCircle className="mr-3 h-6 w-6 group-hover:scale-110 transition-transform" />
               Request Resource
