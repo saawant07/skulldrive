@@ -134,8 +134,7 @@ function App() {
 
       <div className="max-w-7xl mx-auto space-y-8 relative z-10">
 
-        <div className="absolute inset-0 pointer-events-none">
-        </div>
+
 
 
 
@@ -147,7 +146,7 @@ function App() {
           <motion.img
             src="/skull.png"
             alt="Cursed Skull"
-            className="mb-4 w-40 md:w-64 object-contain drop-shadow-[0_0_30px_rgba(185,28,28,0.8)] relative z-10 will-change-transform"
+            className="mb-4 w-32 md:w-48 object-contain drop-shadow-[0_0_30px_rgba(185,28,28,0.8)] relative z-10 will-change-transform"
             animate={{
               y: [0, -15, 0]
             }}
@@ -160,25 +159,25 @@ function App() {
 
           {/* Fluid Header Scaling */}
           <div className="w-full px-2 relative z-10">
-            <h1 className="text-4xl md:text-5xl font-heading font-black text-white tracking-tighter md:tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-2 whitespace-nowrap overflow-wrap-anywhere" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
+            <h1 className="text-3xl md:text-4xl font-heading font-black text-white tracking-tighter md:tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-2 whitespace-nowrap overflow-wrap-anywhere" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
               Skulldrive
             </h1>
           </div>
 
-          <h2 key="slogan-final" className="demonic-slogan text-xl md:text-3xl font-serif text-red-500 tracking-wide text-balance px-4 max-w-[90%] md:max-w-4xl mx-auto relative z-10 drop-shadow-[0_0_5px_rgba(220,38,38,0.6)]">
+          <h2 key="slogan-final" className="demonic-slogan text-xl md:text-3xl font-serif text-red-500 tracking-wide text-balance px-4 max-w-[90%] md:max-w-4xl mx-auto relative z-10 drop-shadow-[0_0_5px_rgba(220,38,38,0.6)] my-4">
             Exhume the Syllabus. <br className="hidden md:block" />
             <span className="">Study the Souls of the Passed.</span>
           </h2>
 
           <div className="mt-6 flex flex-row flex-wrap justify-center gap-4 items-center relative z-50">
-            <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-black/80 backdrop-blur-md border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">
+            <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-black/80 backdrop-blur-md border border-red-600 shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-red-900/20 hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">
               <Upload className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
               Upload Resource
             </Button>
             {/* Request Resource - Twin Style */}
             <Button
               onClick={() => setIsRequestOpen(true)}
-              className="px-10 py-5 text-xl font-bold bg-black border-2 border-[#ff0000] shadow-[0_0_15px_rgba(220,38,38,0.5)] text-white rounded-xl hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 group relative overflow-hidden"
+              className="px-10 py-5 text-xl font-bold bg-black border border-red-600 shadow-[0_0_15px_rgba(220,38,38,0.5)] text-white rounded-xl hover:bg-red-900/20 hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 group relative overflow-hidden"
             >
               <HelpCircle className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
               Request Resource
