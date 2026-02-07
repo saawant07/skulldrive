@@ -13,7 +13,6 @@ import { Button } from './components/ui/Button';
 import { AnimatePresence, motion } from 'framer-motion';
 import CustomCursor from './components/CustomCursor';
 import { BloodRain } from './components/BloodRain';
-import { HangingChains } from './components/HangingChains';
 import { RequestResourceModal } from './components/RequestResourceModal';
 
 function App() {
@@ -137,11 +136,7 @@ function App() {
 
       <div className="max-w-7xl mx-auto space-y-8 relative z-10">
 
-        {/* Gothic Elements - Framing the page content */}
         <div className="absolute inset-0 pointer-events-none">
-          <HangingChains />
-          <div className="absolute left-[2%] h-[150%] w-[1px] bg-gradient-to-b from-transparent via-red-900 to-transparent opacity-30 z-0" />
-          <div className="absolute right-[2%] h-[150%] w-[1px] bg-gradient-to-b from-transparent via-red-900 to-transparent opacity-30 z-0" />
         </div>
 
 
