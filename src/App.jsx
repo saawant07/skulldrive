@@ -12,7 +12,6 @@ import { Button } from './components/ui/Button';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import CustomCursor from './components/CustomCursor';
-import GothicSkull from './components/GothicSkull';
 
 function App() {
   const [resources, setResources] = useState([]);
@@ -224,14 +223,20 @@ function App() {
 
         {/* Header Section */}
         <div className="text-center space-y-4 py-8 relative flex flex-col items-center">
-          <motion.div
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            whileHover={{ scale: 1.1, transition: { duration: 0.5 } }}
-            className="mb-8 cursor-hover-target w-32 h-32 md:w-48 md:h-48 relative"
-          >
-            <GothicSkull className="w-full h-full" />
-          </motion.div>
+          <motion.img
+            src="/grimoire.png"
+            alt="Cursed Grimoire"
+            className="mb-8 w-48 md:w-80 object-contain drop-shadow-[0_0_40px_rgba(185,28,28,0.7)]"
+            animate={{
+              y: [0, -25, 0],
+              scale: [1, 1.03, 1]
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
 
           {/* Fluid Header Scaling & Truncation Fix */}
           <div className="w-full max-w-[100vw] overflow-hidden px-2">
