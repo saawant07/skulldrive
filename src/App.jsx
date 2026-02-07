@@ -150,13 +150,13 @@ function App() {
         <BloodRain className="opacity-80" />
 
         {/* Header Section / Hero - Open Layout */}
-        <div className="flex flex-col items-center justify-center text-center space-y-8 py-20 relative z-20">
+        <div className="flex flex-col items-center justify-center text-center space-y-2 py-10 relative z-20">
           <motion.img
             src="/skull.png"
             alt="Cursed Skull"
-            className="mb-8 w-56 md:w-80 object-contain drop-shadow-[0_0_30px_rgba(185,28,28,0.8)] relative z-10 will-change-transform"
+            className="mb-4 w-40 md:w-64 object-contain drop-shadow-[0_0_30px_rgba(185,28,28,0.8)] relative z-10 will-change-transform"
             animate={{
-              y: [0, -20, 0]
+              y: [0, -15, 0]
             }}
             transition={{
               duration: 4,
@@ -167,17 +167,17 @@ function App() {
 
           {/* Fluid Header Scaling */}
           <div className="w-full px-2 relative z-10">
-            <h1 className="text-3xl md:text-4xl font-heading font-black text-white tracking-tighter md:tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4 whitespace-nowrap overflow-wrap-anywhere" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
+            <h1 className="text-4xl md:text-5xl font-heading font-black text-white tracking-tighter md:tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-2 whitespace-nowrap overflow-wrap-anywhere" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
               Skulldrive
             </h1>
           </div>
 
-          <h2 key="slogan-final" className="demonic-slogan text-lg md:text-xl font-heading font-normal tracking-wide text-balance px-4 max-w-[80%] md:max-w-4xl mx-auto relative z-10">
+          <h2 key="slogan-final" className="demonic-slogan text-xl md:text-3xl font-serif text-red-500 tracking-wide text-balance px-4 max-w-[90%] md:max-w-4xl mx-auto relative z-10 drop-shadow-[0_0_5px_rgba(220,38,38,0.6)]">
             Exhume the Syllabus. <br className="hidden md:block" />
             <span className="">Study the Souls of the Passed.</span>
           </h2>
 
-          <div className="mt-10 flex flex-row flex-wrap justify-center gap-4 items-center relative z-50">
+          <div className="mt-6 flex flex-row flex-wrap justify-center gap-4 items-center relative z-50">
             <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-black/80 backdrop-blur-md border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">
               <Upload className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
               Upload Resource
@@ -192,7 +192,7 @@ function App() {
             </Button>
           </div>
 
-          <div className="max-w-4xl w-full mx-auto mt-12 flex flex-col gap-4 relative z-20">
+          <div className="max-w-4xl w-full mx-auto mt-6 flex flex-col gap-4 relative z-20">
             <SearchBar onSearch={setSearchQuery} />
 
             <div className="flex justify-center">
