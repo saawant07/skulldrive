@@ -237,6 +237,7 @@ function App() {
             Skulldrive
           </h1>
 
+          {/* Slogan Updated */}
           <p className="text-xl md:text-2xl italic font-light text-slate-200 drop-shadow-[0_0_8px_rgba(225,29,72,0.8)]">
             Exhume the Syllabus. Study the Souls of the Passed.
           </p>
