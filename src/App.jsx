@@ -137,7 +137,7 @@ function App() {
       <div className="max-w-7xl mx-auto space-y-8 relative z-10">
 
         {/* Header Section / Hero */}
-        <div className="relative w-full h-[800px] overflow-hidden flex flex-col items-center justify-center text-center space-y-8">
+        <div className="relative w-full min-h-[800px] overflow-hidden flex flex-col items-center justify-center text-center space-y-8">
 
           {/* Gothic Elements */}
           <ArcaneRunes />
@@ -148,13 +148,13 @@ function App() {
           <div className="absolute right-[10%] h-full w-[1px] bg-gradient-to-b from-transparent via-red-900 to-transparent opacity-30 pointer-events-none z-0" />
 
           {/* Vignette Overlay */}
-          <div className="absolute inset-0 pointer-events-none z-20 bg-gradient-to-r from-black/80 via-transparent to-black/80" />
+          <div className="absolute inset-0 pointer-events-none z-10 bg-gradient-to-r from-black/80 via-transparent to-black/80" />
 
           {/* Blood Rain Background - Restricted to this container */}
           <BloodRain className="opacity-80" />
 
           {/* Wrapper for content to ensure z-index above rain */}
-          <div className="relative z-10 flex flex-col items-center w-full max-w-4xl px-4">
+          <div className="relative z-30 flex flex-col items-center w-full max-w-4xl px-4">
             <motion.img
               src="/skull.png"
               alt="Cursed Skull"
