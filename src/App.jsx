@@ -151,7 +151,7 @@ function App() {
         <BloodRain className="opacity-80" />
 
         {/* Header Section / Hero - Open Layout */}
-        <div className="flex flex-col items-center justify-center text-center space-y-8 py-20 relative z-20 min-h-screen">
+        <div className="flex flex-col items-center justify-center text-center space-y-8 py-20 relative z-20">
           <motion.img
             src="/skull.png"
             alt="Cursed Skull"
