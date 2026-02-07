@@ -428,4 +428,29 @@ body {
   font-size: 1rem !important;
 }
 
+.demonic-slogan {
+  color: #e11d48 !important;
+  /* Blood Red */
+  font-family: 'Grenze Gotisch', serif;
+  /* Or your chosen gothic font */
+  text-shadow:
+    1px 1px 2px #000,
+    0 0 10px #e11d48,
+    0 0 20px #880808;
+  letter-spacing: 0.05em;
+  animation: pulse-red 3s infinite ease-in-out;
+}
+
+@keyframes pulse-red {
+
+  0%,
+  100% {
+    text-shadow: 0 0 10px #e11d48, 0 0 20px #880808;
+  }
+
+  50% {
+    text-shadow: 0 0 20px #ff0000, 0 0 40px #e11d48, 0 0 60px #880808;
+  }
+}
+
 /* Clean end of file */

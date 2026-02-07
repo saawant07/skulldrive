@@ -235,14 +235,14 @@ function App() {
 
           {/* Fluid Header Scaling & Truncation Fix */}
           <div className="w-full max-w-[100vw] overflow-hidden px-2">
-            <h1 className="text-5xl md:text-8xl font-heading font-black text-white tracking-tighter md:tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4 whitespace-nowrap overflow-wrap-anywhere" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
+            <h1 className="text-[clamp(2.5rem,10vw,5rem)] font-heading font-black text-white tracking-tighter md:tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4 whitespace-nowrap overflow-wrap-anywhere" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
               Skulldrive
             </h1>
           </div>
 
-          <h2 key="slogan-final" className="text-2xl md:text-6xl font-heading font-normal text-slate-100 tracking-wide text-balance drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] px-4 max-w-[80%] md:max-w-4xl mx-auto">
+          <h2 key="slogan-final" className="demonic-slogan text-2xl md:text-6xl font-heading font-normal tracking-wide text-balance px-4 max-w-[80%] md:max-w-4xl mx-auto">
             Exhume the Syllabus. <br className="hidden md:block" />
-            <span className="text-slate-200 drop-shadow-[0_0_25px_rgba(220,38,38,0.9)]">Study the Souls of the Passed.</span>
+            <span className="">Study the Souls of the Passed.</span>
           </h2>
 
           <div className="mt-8 flex justify-center">

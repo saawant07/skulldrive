@@ -134,7 +134,7 @@ export function UploadModal({ isOpen, onClose, onUploadSuccess }) {
                             placeholder="e.g. Data Structures & Algorithms"
                             value={formData.subjectName}
                             onChange={e => setFormData({ ...formData, subjectName: e.target.value })}
-                            className="bg-slate-900/50 border-red-900/40 text-slate-50 placeholder-slate-500 focus:border-[#e11d48] focus:ring-[#e11d48]"
+                            className="bg-slate-900 border-red-900/40 text-white placeholder-slate-500 focus:border-[#e11d48] focus:ring-[#e11d48]"
                         />
                     </div>
 
@@ -145,17 +145,17 @@ export function UploadModal({ isOpen, onClose, onUploadSuccess }) {
                                 placeholder="e.g. CS201"
                                 value={formData.subjectCode}
                                 onChange={e => setFormData({ ...formData, subjectCode: e.target.value })}
-                                className="bg-slate-900/50 border-red-900/40 text-slate-50 placeholder-slate-500 focus:border-[#e11d48] focus:ring-[#e11d48]"
+                                className="bg-slate-900 border-red-900/40 text-white placeholder-slate-500 focus:border-[#e11d48] focus:ring-[#e11d48]"
                             />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-slate-300 mb-1">Semester *</label>
                             <select
-                                className="w-full h-10 rounded-lg border border-red-900/40 bg-slate-900/50 px-3 py-2 text-sm text-slate-50 focus:ring-2 focus:ring-[#e11d48] focus:border-transparent focus:outline-none"
+                                className="w-full h-10 rounded-lg border border-red-900/40 bg-slate-900 px-3 py-2 text-sm text-white focus:ring-2 focus:ring-[#e11d48] focus:border-transparent focus:outline-none"
                                 value={formData.semester}
                                 onChange={e => setFormData({ ...formData, semester: e.target.value })}
                             >
-                                {[1, 2, 3, 4, 5, 6, 7, 8].map(s => <option key={s} value={s} className="bg-slate-900 text-slate-50">{s}</option>)}
+                                {[1, 2, 3, 4, 5, 6, 7, 8].map(s => <option key={s} value={s} className="bg-slate-900 text-white">{s}</option>)}
                             </select>
                         </div>
                     </div>
@@ -163,11 +163,11 @@ export function UploadModal({ isOpen, onClose, onUploadSuccess }) {
                     <div>
                         <label className="block text-sm font-medium text-slate-300 mb-1">Resource Type *</label>
                         <select
-                            className="w-full h-10 rounded-lg border border-red-900/40 bg-slate-900/50 px-3 py-2 text-sm text-slate-50 focus:ring-2 focus:ring-[#e11d48] focus:border-transparent focus:outline-none"
+                            className="w-full h-10 rounded-lg border border-red-900/40 bg-slate-900 px-3 py-2 text-sm text-white focus:ring-2 focus:ring-[#e11d48] focus:border-transparent focus:outline-none"
                             value={formData.resourceType}
                             onChange={e => setFormData({ ...formData, resourceType: e.target.value })}
                         >
-                            {['Notes', 'Module', 'Question Paper', 'Question Set'].map(t => <option key={t} value={t} className="bg-slate-900 text-slate-50">{t}</option>)}
+                            {['Notes', 'Module', 'Question Paper', 'Question Set'].map(t => <option key={t} value={t} className="bg-slate-900 text-white">{t}</option>)}
                         </select>
                     </div>
 
