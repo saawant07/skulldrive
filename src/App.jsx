@@ -223,10 +223,19 @@ function App() {
 
         {/* Header Section */}
         <div className="text-center space-y-4 py-8 relative flex flex-col items-center">
-          <img
-            src="/grimoire.png"
+          <motion.img
+            src="skull.png"
             alt="Cursed Grimoire"
-            className="mb-8 w-48 md:w-80 object-contain drop-shadow-[0_0_40px_rgba(185,28,28,0.7)]"
+            className="mb-8 w-64 md:w-96 object-contain drop-shadow-[0_0_40px_rgba(185,28,28,0.7)]"
+            animate={{
+              y: [0, -25, 0],
+              scale: [1, 1.05, 1]
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
           />
 
           {/* Fluid Header Scaling & Truncation Fix */}
