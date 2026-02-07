@@ -167,12 +167,12 @@ function App() {
 
           {/* Fluid Header Scaling */}
           <div className="w-full px-2 relative z-10">
-            <h1 className="text-[clamp(2.5rem,10vw,5rem)] font-heading font-black text-white tracking-tighter md:tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4 whitespace-nowrap overflow-wrap-anywhere" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
+            <h1 className="text-3xl md:text-4xl font-heading font-black text-white tracking-tighter md:tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4 whitespace-nowrap overflow-wrap-anywhere" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
               Skulldrive
             </h1>
           </div>
 
-          <h2 key="slogan-final" className="demonic-slogan text-2xl md:text-6xl font-heading font-normal tracking-wide text-balance px-4 max-w-[80%] md:max-w-4xl mx-auto relative z-10">
+          <h2 key="slogan-final" className="demonic-slogan text-lg md:text-xl font-heading font-normal tracking-wide text-balance px-4 max-w-[80%] md:max-w-4xl mx-auto relative z-10">
             Exhume the Syllabus. <br className="hidden md:block" />
             <span className="">Study the Souls of the Passed.</span>
           </h2>
