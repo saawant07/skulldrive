@@ -151,7 +151,7 @@ function App() {
         <BloodRain className="opacity-80" />
 
         {/* Header Section / Hero - Open Layout */}
-        <div className="flex flex-col items-center justify-center text-center space-y-8 py-20 relative z-20">
+        <div className="flex flex-col items-center justify-center text-center space-y-8 py-20 relative z-20 min-h-screen">
           <motion.img
             src="/skull.png"
             alt="Cursed Skull"
@@ -166,8 +166,8 @@ function App() {
             }}
           />
 
-          {/* Fluid Header Scaling & Truncation Fix */}
-          <div className="w-full max-w-full overflow-hidden px-2 relative z-10">
+          {/* Fluid Header Scaling */}
+          <div className="w-full px-2 relative z-10">
             <h1 className="text-[clamp(2.5rem,10vw,5rem)] font-heading font-black text-white tracking-tighter md:tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4 whitespace-nowrap overflow-wrap-anywhere" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
               Skulldrive
             </h1>
@@ -178,8 +178,8 @@ function App() {
             <span className="">Study the Souls of the Passed.</span>
           </h2>
 
-          <div className="mt-8 flex justify-center relative z-50">
-            <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-red-950/40 backdrop-blur-md border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">
+          <div className="mt-10 flex justify-center relative z-50">
+            <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-black/80 backdrop-blur-md border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">
               <Upload className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
               Upload Resource
             </Button>

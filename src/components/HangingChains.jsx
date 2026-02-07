@@ -1,21 +1,23 @@
 export function HangingChains() {
     return (
         <>
-            {/* Left Chain */}
-            <img
-                src="/chain.png"
-                alt="Hanging Chain"
-                className="absolute top-0 left-10 h-[60vh] w-auto animate-swing z-10 pointer-events-none opacity-80 mix-blend-multiply"
-                style={{ animationDelay: '0s' }}
-            />
+            {/* Left Spectral Chain */}
+            <div
+                className="absolute top-0 left-16 w-1 h-[50vh] border-l-2 border-dashed border-red-900/60 z-10 animate-pulse pointer-events-none"
+                style={{ animationDuration: '4s' }}
+            >
+                {/* Weight End-Cap */}
+                <div className="absolute -bottom-1 -left-[5px] w-3 h-3 rounded-full bg-red-900 shadow-[0_0_10px_#7f1d1d]" />
+            </div>
 
-            {/* Right Chain */}
-            <img
-                src="/chain.png"
-                alt="Hanging Chain"
-                className="absolute top-0 right-20 h-[40vh] w-auto animate-swing z-10 pointer-events-none opacity-80 mix-blend-multiply"
-                style={{ animationDelay: '2s' }}
-            />
+            {/* Right Spectral Chain */}
+            <div
+                className="absolute top-0 right-16 w-1 h-[50vh] border-l-2 border-dashed border-red-900/60 z-10 animate-pulse pointer-events-none"
+                style={{ animationDuration: '5s' }}
+            >
+                {/* Weight End-Cap */}
+                <div className="absolute -bottom-1 -left-[5px] w-3 h-3 rounded-full bg-red-900 shadow-[0_0_10px_#7f1d1d]" />
+            </div>
         </>
     );
 }
