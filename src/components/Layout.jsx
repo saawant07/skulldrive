@@ -12,7 +12,7 @@ export function Layout({ children, onUploadClick }) {
                     <p className="text-sm font-medium text-slate-400">
                         &copy; 2026 Skulldrive by{' '}
                         <span className="inline-block font-display font-bold text-red-500 tracking-widest animate-glitch opacity-80 drop-shadow-[0_0_5px_rgba(225,29,72,0.8)]">
-                            Saawant Gupta
+                            HardCoded
                         </span>
                     </p>
                     <p className="mt-2 text-slate-500 text-xs tracking-wide uppercase opacity-70">
